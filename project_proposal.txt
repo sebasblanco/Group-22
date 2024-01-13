@@ -22,7 +22,7 @@ Keeping user information secure and showing accurate alerts (by time and locatio
 
 *Existing Related Projects
 
-Waze
+Nextdoor, Ring, Waze
 
 *Intended Platform and Programming Languages
 
