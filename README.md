@@ -8,7 +8,7 @@
 
 *Brief Overview
 
-A mobile app that groups users by zip code where users are allowed to create alerts and see alerts made from other users. 
+A web app that groups users by zip code where users are allowed to create alerts and see alerts made from other users.
 
 *Motivation
 
@@ -24,12 +24,14 @@ Keeping user information secure and showing accurate alerts (by time and locatio
 
 *Existing Related Projects
 
-Nextdoor, Ring, Waze
+Craigslist, Ring, Waze
 
 *Intended Platform and Programming Languages
 
-iOS and Android. Python and React.js
+iOS and Android. React
 
 *Third-Party Libraries
+
+Javascript, Python, 
 
 *Team Member Responsibilities
