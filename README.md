@@ -6,32 +6,34 @@
 
 "Friendly Neighborhood"
 
-*Brief Overview
+*Brief Overview*
 
 A web app that groups users by zip code where users are allowed to create alerts and see alerts made from other users.
 
-*Motivation
+*Motivation*
 
 To connect people and keep the area safe.
 
-*Features and Types of Users
+*Features and Types of Users*
 
-Users are able to create alerts for the zip code they are in and allowed to see alerts from other areas. There will be a list and a map for the alerts.
+We aim to implement: a map, different types of alerts, one type of user, rating system, link to other accounts. 
 
-*Risks and Challenges
+*Risks and Challenges*
 
 Keeping user information secure and showing accurate alerts (by time and location). 
 
-*Existing Related Projects
+*Existing Related Projects*
 
-Craigslist, Ring, Waze
+Craigslist and Waze. We are aiming to be safer and better UI than Craigslist, use similar crowd-sourced map and alerts as Waze. 
 
-*Intended Platform and Programming Languages
+*Intended Platform and Programming Languages*
 
-iOS and Android. React
+iOS and Android. Javascript and Python
 
-*Third-Party Libraries
+*Third-Party Libraries*
 
-Javascript, Python, 
+React, Google Maps, Auth0
 
-*Team Member Responsibilities
+*Team Member Responsibilities*
+
+Learn Javascript, 
