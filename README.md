@@ -28,7 +28,7 @@ Nextdoor, Ring, Waze
 
 *Intended Platform and Programming Languages
 
-iOS and Android. 
+iOS and Android. Python and React.js
 
 *Third-Party Libraries
 
