@@ -16,7 +16,7 @@ To connect people and keep the area safe.
 
 *Features and Types of Users*
 
-We aim to implement: a map with different types of alert and a rating system; two types of user with link to other accounts and other user-related information. 
+We aim to implement: a map with different types of alert and a rating system; two types of user with link to other accounts and other user-related information.
 
 We aim to secure user information and safety. 
 
@@ -30,7 +30,7 @@ Craigslist and Waze. We are aiming to be safer and better UI than Craigslist, us
 
 *Intended Platform and Programming Languages*
 
-iOS and Android. Javascript and Python
+iOS and Android. JS/React, CSS, Python
 
 *Third-Party Libraries*
 
