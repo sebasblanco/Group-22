@@ -16,7 +16,9 @@ To connect people and keep the area safe.
 
 *Features and Types of Users*
 
-We aim to implement 2 pages: a map with different types of alert, rating system; one type of user, link to other accounts, other user-related information. 
+We aim to implement: a map with different types of alert and a rating system; two types of user with link to other accounts and other user-related information. 
+
+We aim to secure user information and safety. 
 
 *Risks and Challenges*
 
