@@ -30,12 +30,12 @@ Craigslist and Waze. We are aiming to be safer and better UI than Craigslist, us
 
 *Intended Platform and Programming Languages*
 
-iOS and Android. JS/React, CSS, Python
+Web Application using JS/React, CSS, Python
 
 *Third-Party Libraries*
 
-React, Google Maps, Auth0
+Google Maps, Auth0
 
 *Team Member Responsibilities*
 
-Learn Javascript, 
+Learn Javascript.
