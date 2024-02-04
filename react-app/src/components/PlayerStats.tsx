@@ -97,8 +97,12 @@ function htmlForm() {
       </form>
 
       {/* Conditionally load the stats for the selected game */}
+      {/* Split the gameName from the tag */}
       {selectedItem === "League of Legends" && (
-        <LeagueOfLegendsStats username={username} />
+        (() => {
+        const [gameName, tag] = username.split("#");
+        return <LeagueOfLegendsStats username={gameName} tag={tag}/>;
+        })()
       )}
     </>
   );
