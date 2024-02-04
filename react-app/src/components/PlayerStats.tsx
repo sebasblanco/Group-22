@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LeagueOfLegendsStats from "./LeagueOfLegendsStats";
 
 function htmlForm() {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -65,6 +66,15 @@ function htmlForm() {
                 Starcraft
               </a>
             </li>
+            <li>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleItemClick("League of Legends")}
+              >
+                League of Legends
+              </a>
+            </li>
           </ul>
         </div>
         {/* End of dropdown menu */}
@@ -85,6 +95,11 @@ function htmlForm() {
           Submit
         </button>
       </form>
+
+      {/* Conditionally load the stats for the selected game */}
+      {selectedItem === "League of Legends" && (
+        <LeagueOfLegendsStats username={username} />
+      )}
     </>
   );
 }
