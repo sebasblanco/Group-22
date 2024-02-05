@@ -10,7 +10,7 @@ namespace Company.Function
 {
     public class LeagueGetPUUID
     {
-        const string API_KEY = "RGAPI-e798d195-1699-4872-be89-25e47e7ac361";
+        const string API_KEY = "RGAPI-f32fb186-7dd6-4689-b228-2c86152e45ee";
         private readonly ILogger<LeagueGetPUUID> _logger;
 
         public LeagueGetPUUID(ILogger<LeagueGetPUUID> logger)
