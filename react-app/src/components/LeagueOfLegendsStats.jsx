@@ -6,7 +6,7 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
 
     useEffect(() => {
         const fetchData = () => {
-            var APICallString = "http://localhost:7071/api/leaguegetpuuid?username=" + username + "&tag=" + tag;
+            var APICallString = "https://gamer-insights.azurewebsites.net/api/leaguegetpuuid?code=S-qc4dIw6awRjX4zf2-8Fq5-F3sZjm2R1IicSv7YRN6cAzFusHAL1A%3D%3D&username=" + username + "&tag=" + tag;
             console.log(APICallString);
 
             axios.get(APICallString)
