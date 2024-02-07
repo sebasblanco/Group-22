@@ -1,34 +1,31 @@
 using System.Dynamic;
+using System.Net.Http.Json;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
 namespace Company.Function
 {
-    public class LeagueGetPUUID
-    {
+    public class GetChampionMastery
+    {   
         string ?API_KEY = System.Environment.GetEnvironmentVariable("API_KEY");
-        private readonly ILogger<LeagueGetPUUID> _logger;
+        private readonly ILogger<GetChampionMastery> _logger;
 
-        public LeagueGetPUUID(ILogger<LeagueGetPUUID> logger)
+        public GetChampionMastery(ILogger<GetChampionMastery> logger)
         {
             _logger = logger;
         }
 
-        [Function("LeagueGetPUUID")]
+        [Function("GetChampionMastery")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
-            string? username = req.Query["username"];
-            string? tag = req.Query["tag"];
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-            _logger.LogInformation("username: " + username);
-            _logger.LogInformation("tag: " + tag);
-
-            string url = $"https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{username}/{tag}?api_key={API_KEY}";
+            string? puuid = req.Query["puuid"];
+            _logger.LogInformation("Puuid: " + puuid);
+            string url = $"https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/{puuid}?api_key={API_KEY}";
             _logger.LogInformation($"url: {url}");
-            
+
             try
             {
                 var client = new HttpClient();
@@ -36,7 +33,7 @@ namespace Company.Function
 
                 var json = await response.Content.ReadAsStringAsync();
 
-                dynamic ?responseData = JsonSerializer.Deserialize<ExpandoObject>(json, new JsonSerializerOptions
+                dynamic ?responseData = JsonSerializer.Deserialize<List<ExpandoObject>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
