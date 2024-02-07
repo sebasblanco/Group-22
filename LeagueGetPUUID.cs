@@ -4,13 +4,14 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Company.Function
 {
     public class LeagueGetPUUID
     {
-        const string API_KEY = "RGAPI-f32fb186-7dd6-4689-b228-2c86152e45ee";
+        string ?API_KEY = System.Environment.GetEnvironmentVariable("API_KEY");
         private readonly ILogger<LeagueGetPUUID> _logger;
 
         public LeagueGetPUUID(ILogger<LeagueGetPUUID> logger)
