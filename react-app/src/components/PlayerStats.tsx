@@ -1,24 +1,35 @@
 import React, { useState } from "react";
 import LeagueOfLegendsStats from "./LeagueOfLegendsStats";
 
-function htmlForm() {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [username, setUsername] = useState("");
+function HtmlForm() {
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [username, setUsername] = useState<string>("");
+  const [gameStats, setGameStats] = useState<JSX.Element | null>(null);
 
-  const handleItemClick = (item) => {
+  const handleItemClick = (item: string) => {
     setSelectedItem(item);
   };
 
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent the default form submission
     // Handle the selected item and username
     console.log("Selected game:", selectedItem);
     console.log("Username:", username);
-    // You can also send the selected game and username to the server here
+    // Load game stats only if the username and game are selected
+    if (selectedItem && username) {
+      // Load game stats based on selectedItem and username
+      if (selectedItem === "League of Legends") {
+        const [gameName, tag] = username.split("#");
+        setGameStats(<LeagueOfLegendsStats username={gameName} tag={tag} />);
+      } else {
+        // Handle other games here if needed
+        setGameStats(null); // Clear game stats if not applicable
+      }
+    }
   };
 
   return (
@@ -97,15 +108,9 @@ function htmlForm() {
       </form>
 
       {/* Conditionally load the stats for the selected game */}
-      {/* Split the gameName from the tag */}
-      {selectedItem === "League of Legends" && (
-        (() => {
-        const [gameName, tag] = username.split("#");
-        return <LeagueOfLegendsStats username={gameName} tag={tag}/>;
-        })()
-      )}
+      {gameStats}
     </>
   );
 }
 
-export default htmlForm;
+export default HtmlForm;
