@@ -1,27 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
+import "./LolMatchBox";
+import LoLMatchBox from "./LolMatchBox";
 
 const LoLMatchHistory = ({ username, tag, puuid }) => {
+  const [matchIds, setMatchIds] = useState([]); // State to track active tab
+  //Get a list of recent 20 games
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://gamer-insights.azurewebsites.net/api/getlistofmatches?code=NUwm1jlubSXbf9aNRQkmUYR0rK4YCNGq0Xrao1JjUMzaAzFuQ4uvXw%3D%3D&puuid=${puuid}`
+        );
+        setMatchIds(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [puuid]);
 
-    const [matchIds, setMatchIds] = useState([]); // State to track active tab
-    //Get a list of recent 20 games
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get(
-              `https://gamer-insights.azurewebsites.net/api/leaguegetpuuid?code=S-qc4dIw6awRjX4zf2-8Fq5-F3sZjm2R1IicSv7YRN6cAzFusHAL1A%3D%3D&username=${username}&tag=${tag}`
-            );
-            setPuuid(response.data.puuid);
-          } catch (error) {
-            console.error(error);
-          }
-        };
-        fetchData();
-      }, [username, tag]);
-
-
-
-  return <div className="LoL-stats-div">hi</div>;
+  return (
+    <div>
+      <div className="LoL-stats-div">hi</div>
+      <h2>Match History</h2>
+      <ul>
+      {matchIds.map((matchId, index) => (
+        <LoLMatchBox key={index} puuid={puuid} matchId={matchId} />
+        ))}
+      </ul>
+    </div>
+  );
 };
 export default LoLMatchHistory;
