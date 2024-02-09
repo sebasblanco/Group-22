@@ -14,11 +14,6 @@ p {
   line-height: 10px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  background-color: #f0f0f0;
-}
 .champion-list-container {
   padding: 10px;
   display: flex;
@@ -36,7 +31,8 @@ p {
 }
 
 .champion-entry {
-  border: 2px solid #255;
+  border: 1px solid #255;
+  background-color: #f8eddb;
   margin-bottom: 10px;
   padding: 10px;
   display: "flex";
@@ -52,4 +48,16 @@ p {
   height: auto;
   padding-right: 10px;
   margin-left: 10px;
+}
+
+.tab {
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.tab.active {
+  font-weight: bold;
 }

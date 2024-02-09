@@ -12,28 +12,37 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
   };
 
   // NavBar component
+  // NavBar component
   const NavBar = () => {
     return (
-      <div className="navbar">
-        <div
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#f0f0f0",
+          listStyle: "none",
+          padding: 0,
+        }}
+      >
+        <li
           className={`tab ${activeTab === "matchHistory" ? "active" : ""}`}
           onClick={() => handleTabChange("matchHistory")}
         >
           Match History
-        </div>
-        <div
+        </li>
+        <li
           className={`tab ${activeTab === "championMastery" ? "active" : ""}`}
           onClick={() => handleTabChange("championMastery")}
         >
           Champion Mastery
-        </div>
+        </li>
       </div>
     );
   };
 
   return (
     <div>
-      <NavBar /> {/* Render the NavBar */}
+      <NavBar />
       {activeTab === "championMastery" && (
         <div>
           <LoLMasteryStats username={username} tag={tag} />{" "}
