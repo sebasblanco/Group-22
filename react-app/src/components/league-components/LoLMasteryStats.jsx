@@ -79,6 +79,7 @@ const LoLMasteryStats = ({ username, tag }) => {
   return (
     <div className="LoL-stats-div">
       <p>LoL stats for {username}</p>
+      <p>Puuid: {puuid}</p>
 
       <div className="champion-list-container">
         <p>Favorite Champions:</p>

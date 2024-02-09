@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 import LoLMasteryStats from "./LoLMasteryStats";
+import LoLMatchHistory from "./LoLMatchHistory";
 
 const LeagueOfLegendsStats = ({ username, tag }) => {
   const [activeTab, setActiveTab] = useState("championMastery"); // State to track active tab
@@ -51,7 +52,9 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
       )}
       {activeTab === "matchHistory" && (
         /* Render match history content */
-        <div>{/* Your match history content */}</div>
+        <div>
+          <LoLMatchHistory username={username} tag={tag} />{" "}
+        </div>
       )}
     </div>
   );
