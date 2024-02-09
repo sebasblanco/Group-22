@@ -2,25 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 
-const LoLMasteryStats = ({ username, tag }) => {
-  const [puuid, setPuuid] = useState(null);
+const LoLMasteryStats = ({ username, tag, puuid }) => {
   const [championMastery, setChampionMastery] = useState([]);
   const [championData, setChampionData] = useState(null);
-
-  // Fetch the puuid
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://gamer-insights.azurewebsites.net/api/leaguegetpuuid?code=S-qc4dIw6awRjX4zf2-8Fq5-F3sZjm2R1IicSv7YRN6cAzFusHAL1A%3D%3D&username=${username}&tag=${tag}`
-        );
-        setPuuid(response.data.puuid);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [username, tag]);
 
   // Fetch the champion masterys
   useEffect(() => {
