@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import './LeagueOfLegendsStyle.css';
 
 const LeagueOfLegendsStats = ({ username, tag }) => {
     const [puuid, setPuuid] = useState(null);
@@ -65,24 +66,25 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     //For the pictures, the first letter of the champ name needs to be capitalized, spaces removed, punctuation removed
     function FormatChampName(string) {
         string = string.replace(/\s/g, '');
-        string = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
+        string = string.replace(/[.,'\/#!$%\^&\*;:{}=\-_`~()]/g,"")
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     return (
         <div>
             <p>LoL stats for {username}</p>
-            {puuid && (
-                <p>Their puuid is {puuid}</p>
-            )}
-            <div>
-                <p>Champion Mastery Data:</p>
-                <ul>
+
+            
+             <div className="champion-list-container">
+                <p>Favorite Champions:</p>
+                <ul className="champion-list">
                     {championMastery.map(champion => (
-                        <li key={champion.championId}>
-                            Champion Name: {getChampionNameFromId(champion.championId)}, Champion Level: {champion.championLevel}, Champion Points: {champion.championPoints}
-                            <img width="150px" src={"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + FormatChampName(getChampionNameFromId(champion.championId)) + "_0.jpg"}></img>
-                        </li>
+                        <div className="champion-entry" style={{ display: 'flex', alignItems: 'center' }}>
+                            <span className="champion-info">
+                                {getChampionNameFromId(champion.championId)}, Mastery Level: {champion.championLevel}, Champion Points: {champion.championPoints}
+                            </span>
+                            <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${FormatChampName(getChampionNameFromId(champion.championId))}_0.jpg`} alt="Champion Splash" className="champion-image"/>
+                        </div>
                     ))}
                 </ul>
             </div>

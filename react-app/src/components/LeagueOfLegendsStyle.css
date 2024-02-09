@@ -1,0 +1,47 @@
+div {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:20px;
+}
+p {
+    text-align: center;
+    line-height: 10px;
+   
+   }
+.champion-list-container {
+    border: 2px solid #255;
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.champion-item {
+    margin-bottom: 10px;
+}
+
+.champion-list {
+    list-style-type: none;
+}
+
+
+.champion-entry {
+    border: 2px solid #255;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: 'flex'
+}
+
+
+.champion-info {
+    margin-right: 10px;
+    flex-grow: 1;
+
+}
+
+.champion-image {
+    width: 150px;
+    height: auto; 
+    padding-right: 10px;
+    margin-left: 10px;
+}
