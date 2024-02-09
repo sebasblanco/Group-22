@@ -1,53 +1,55 @@
-.LoL-stats-div{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:20px;
-    background-color: aqua;
-    padding-top: 25px;
+.LoL-stats-div {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: aqua;
+  padding-top: 25px;
 }
 
 div {
-    text-align:center;
+  text-align: center;
 }
+
 p {
-    text-align: center;
-    line-height: 10px;
-   
-   }
+  text-align: center;
+  line-height: 10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
 .champion-list-container {
-    border: 2px solid #255;
-    padding: 10px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .champion-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .champion-list {
-    list-style-type: none;
+  list-style-type: none;
 }
-
 
 .champion-entry {
-    border: 2px solid #255;
-    margin-bottom: 10px;
-    padding: 10px;
-    display: 'flex'
+  border: 2px solid #255;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: "flex";
 }
 
-
 .champion-info {
-    margin-right: 10px;
-    flex-grow: 1;
-
+  margin-right: 10px;
+  flex-grow: 1;
 }
 
 .champion-image {
-    width: 150px;
-    height: auto; 
-    padding-right: 10px;
-    margin-left: 10px;
+  width: 150px;
+  height: auto;
+  padding-right: 10px;
+  margin-left: 10px;
 }
