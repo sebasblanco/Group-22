@@ -19,7 +19,7 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
         style={{
           display: "flex",
           justifyContent: "center",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#282e32",
           listStyle: "none",
           padding: 0,
         }}
