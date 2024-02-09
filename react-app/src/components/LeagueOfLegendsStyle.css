@@ -1,6 +1,12 @@
-div {
+.LoL-stats-div{
     font-family: Arial, Helvetica, sans-serif;
     font-size:20px;
+    background-color: aqua;
+    padding-top: 25px;
+}
+
+div {
+    text-align:center;
 }
 p {
     text-align: center;

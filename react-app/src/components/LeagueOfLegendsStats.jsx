@@ -71,10 +71,10 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     }
 
     return (
-        <div>
+        <div className="LoL-stats-div">
             <p>LoL stats for {username}</p>
 
-            
+
              <div className="champion-list-container">
                 <p>Favorite Champions:</p>
                 <ul className="champion-list">

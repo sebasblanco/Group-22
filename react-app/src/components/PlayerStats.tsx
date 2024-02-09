@@ -34,6 +34,7 @@ function HtmlForm() {
 
   return (
     <>
+    <div>
       <h1>GamerInsights</h1>
       <br />
       <h4>Player Stats</h4>
@@ -109,6 +110,7 @@ function HtmlForm() {
 
       {/* Conditionally load the stats for the selected game */}
       {gameStats}
+      </div>
     </>
   );
 }
