@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LeagueOfLegendsStats from "./LeagueOfLegendsStats";
+import LeagueOfLegendsStats from "./league-components/LeagueOfLegendsStats";
 
 function HtmlForm() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
