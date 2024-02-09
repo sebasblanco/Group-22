@@ -1,8 +1,8 @@
 .LoL-stats-div {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  background-color: aqua;
   padding-top: 25px;
+  background-image: linear-gradient(#4ac9e3, #006eb3);
 }
 
 div {
@@ -12,6 +12,7 @@ div {
 p {
   text-align: center;
   line-height: 10px;
+  font-size: 24px;
 }
 
 .champion-list-container {
@@ -32,10 +33,12 @@ p {
 
 .champion-entry {
   border: 1px solid #255;
-  background-color: #f8eddb;
+  border-radius: 5px;
+  background-image: linear-gradient(#f8eddb, #e3e1d9);
   margin-bottom: 10px;
   padding: 10px;
   display: "flex";
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .champion-info {
@@ -56,6 +59,7 @@ p {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  font-size: 26px;
 }
 
 .tab.active {
