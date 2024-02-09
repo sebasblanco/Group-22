@@ -46,8 +46,16 @@ p {
   flex-grow: 1;
 }
 
+.champion-name {
+  font-weight: bold;
+  color: darkblue;
+}
+
+.mastery-points {
+  color: red;
+}
 .champion-image {
-  width: 150px;
+  width: 85px;
   height: auto;
   padding-right: 10px;
   margin-left: 10px;
@@ -67,12 +75,30 @@ p {
   font-weight: bold;
 }
 
-.lol-match-box {
-  border: 1px solid #255;
+.winner-box {
+  border: 10px solid green;
   border-radius: 5px;
   background-image: linear-gradient(#f8eddb, #e3e1d9);
   margin-bottom: 10px;
   padding: 10px;
   display: "flex";
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+}
+
+.loser-box {
+  border: 10px solid red;
+  border-radius: 5px;
+  background-image: linear-gradient(#f8eddb, #e3e1d9);
+  margin-bottom: 10px;
+  padding: 10px;
+  display: "flex";
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+}
+
+
+.match-participants {
+  text-align: right;
+  list-style: none;
 }

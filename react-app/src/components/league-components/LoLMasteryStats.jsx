@@ -56,7 +56,27 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
   //For the pictures, the first letter of the champ name needs to be capitalized, spaces removed, punctuation removed
   function FormatChampName(string) {
     string = string.replace(/\s/g, "");
-    string = string.replace(/[.,'\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+    string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
+
+
+    //Some champions have different names/formats for their pictures. Edge cases below:
+    if (string === "Wukong") {
+      string = "MonkeyKing";
+    } else if (string == "NunuWillump") {
+      string = "Nunu";
+    } else if (string == "KhaZix") {
+      string = "Khazix";
+    } else if (string == "ChoGath") {
+      string = "Chogath";
+    } else if (string == "KSante") {
+      string = "Ksante";
+    } else if (string == "BelVeth") {
+      string = "Belveth";
+    } else if (string == "LeBlanc") {
+      string = "Leblanc";
+    } else if (string == "KaiSa") {
+      string = "Kaisa";
+    }
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
@@ -74,14 +94,16 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
               style={{ display: "flex", alignItems: "center" }}
             >
               <span className="champion-info">
-                {getChampionNameFromId(champion.championId)}, Mastery Level:{" "}
-                {champion.championLevel}, Champion Points:{" "}
-                {champion.championPoints}
+                <text className="champion-name">{getChampionNameFromId(champion.championId)}</text>
+                <text>, Mastery:{" "} {champion.championLevel}</text>
+                , Champion Points:{" "}
+                <text className="mastery-points">{champion.championPoints}</text>
+                
               </span>
               <img
-                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${FormatChampName(
+                src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
                   getChampionNameFromId(champion.championId)
-                )}_0.jpg`}
+                )}.png`}
                 alt="Champion Splash"
                 className="champion-image"
               />
