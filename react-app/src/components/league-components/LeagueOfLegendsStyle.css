@@ -116,10 +116,14 @@ p {
 
 .red-side {
   margin-top: 0px;
+  margin-right: 0;
+  width: auto;
 }
 
 .blue-side {
   margin-bottom: 0px;
+  margin-right: 0;
+  width: auto;
 }
 
 .all-participants-list {

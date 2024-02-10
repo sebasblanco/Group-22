@@ -69,6 +69,9 @@ const LoLMatchHistory = ({ username, tag, puuid }) => {
           flexDirection: "column",
         }}
       >
+        <span className="rank-text">
+          {username}#{tag}
+        </span>
         <img
           src={
             "https://trackercdn.com/cdn/tracker.gg/lol/ranks/2022/" +

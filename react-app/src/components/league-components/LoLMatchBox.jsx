@@ -12,7 +12,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
           `https://gamer-insights.azurewebsites.net/api/getmatchdata?code=Ourmnsm1rkNiHLBMUb_e_stQtY0tmn5_TqSkbwzj0aeWAzFuESDheA%3D%3D&matchID=${matchId}`
         );
         setMatchData(response.data);
-        // console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -145,8 +145,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             flexDirection: "column",
           }}
         >
-          {/* Original image with KDA */}
-          <div style={{ display: "flex", alignItems: "center" }}>
+          {/* The image and summoner spells */}
+          <div style={{ display: "flex", alignItems: "center:" }}>
             <img
               src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
                 matchData.info.participants[mainPlayerIndex].championName
@@ -154,32 +154,6 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               alt="Champion Splash"
               style={{ marginRight: "10px" }} // Add margin between images if needed
             />
-            {/* KDA information */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-            >
-              {/* Duration of game */}
-              <div className="game-date">
-                {gameType(matchData.info.queueId)}
-              </div>
-              <div className="game-date">
-                {formatDate(matchData.info.gameStartTimestamp)}
-              </div>
-              <div className="game-duration">
-                {formatTime(matchData.info.gameDuration)}
-              </div>
-              <div className="kda">
-                {matchData.info.participants[mainPlayerIndex].kills} /{" "}
-                <span style={{ color: "red" }}>
-                  {matchData.info.participants[mainPlayerIndex].deaths}{" "}
-                </span>
-                / {matchData.info.participants[mainPlayerIndex].assists}
-              </div>
-            </div>
           </div>
           <div className="two-summoner-icons">
             <img
@@ -194,51 +168,45 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             />
           </div>
         </div>
+        {/* KDA information */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            width: "20%",
+          }}
+        >
+          {/* Duration of game */}
+          <div className="game-date">{gameType(matchData.info.queueId)}</div>
+          <div className="game-date">
+            {formatDate(matchData.info.gameStartTimestamp)}
+          </div>
+          <div className="game-duration">
+            {formatTime(matchData.info.gameDuration)}
+          </div>
+          <div className="kda">
+            {matchData.info.participants[mainPlayerIndex].kills} /{" "}
+            <span style={{ color: "red" }}>
+              {matchData.info.participants[mainPlayerIndex].deaths}{" "}
+            </span>
+            / {matchData.info.participants[mainPlayerIndex].assists}
+          </div>
+        </div>
         {/* All of the Items */}
-        <div className="item-list-container">
+        <div className="item-list-container" style={{ width: "35%" }}>
           <ul className="item-list">
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item0}.png.webp`}
-                alt="Item 0"
-                className="item-icon"
-              />
-            </li>
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item1}.png.webp`}
-                alt="Item 1"
-                className="item-icon"
-              />
-            </li>
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item2}.png.webp`}
-                alt="Item 2"
-                className="item-icon"
-              />
-            </li>
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item3}.png.webp`}
-                alt="Item 3"
-                className="item-icon"
-              />
-            </li>
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item4}.png.webp`}
-                alt="Item 4"
-                className="item-icon"
-              />
-            </li>
-            <li>
-              <img
-                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item5}.png.webp`}
-                alt="Item 5"
-                className="item-icon"
-              />
-            </li>
+            {[0, 1, 2, 3, 4, 5].map((index) => (
+              <li key={index}>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
+                    matchData.info.participants[mainPlayerIndex][`item${index}`]
+                  }.png.webp`}
+                  alt={`Item ${index}`}
+                  className="item-icon"
+                />
+              </li>
+            ))}
           </ul>
         </div>
         {/* List the participants */}
@@ -248,8 +216,11 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               <li
                 key={index}
                 className={mainPlayerIndex === index ? "bold-text" : ""}
+                title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
               >
-                {participant.riotIdGameName}
+                {participant.riotIdGameName.length > 5
+                  ? participant.riotIdGameName.slice(0, 5) + "..."
+                  : participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
                     participant.championName
@@ -264,13 +235,16 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             {lastFiveParticipants.map((participant, index) => (
               <li
                 key={index}
+                title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
                 className={
                   mainPlayerIndex === index + firstFiveParticipants.length
                     ? "bold-text"
                     : ""
                 }
               >
-                {participant.riotIdGameName}
+                {participant.riotIdGameName.length > 5
+                  ? participant.riotIdGameName.slice(0, 5) + "..."
+                  : participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
                     participant.championName
