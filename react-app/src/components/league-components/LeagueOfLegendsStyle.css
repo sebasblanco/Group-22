@@ -77,13 +77,13 @@ p {
 
 .match-box {
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 10px;
   display: flex;
   flex-direction: row;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   list-style: none;
-  width: 50%;
+  width: 45%;
 }
 
 .winner-box {
@@ -140,4 +140,17 @@ p {
 .two-summoner-icons {
   margin-left: 5px;
   margin-right: auto;
+}
+.item-list {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  list-style: none;
+  margin-top: -12px;
+  margin-left: 10px;
+}
+
+.item-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 5px; /* Add margin between icons if needed */
 }

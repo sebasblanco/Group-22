@@ -99,6 +99,52 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               </span>
               / {matchData.info.participants[mainPlayerIndex].assists}
             </div>
+
+            {/* All of the Items */}
+            <ul className="item-list">
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item0}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item1}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item2}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item3}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item4}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+              <li>
+                <img
+                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item5}.png.webp`}
+                  alt="SummonerSpell1"
+                  className="item-icon"
+                />
+              </li>
+            </ul>
           </div>
           <div className="two-summoner-icons">
             <img

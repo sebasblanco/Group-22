@@ -24,13 +24,12 @@ const LoLMatchHistory = ({ username, tag, puuid }) => {
   return (
     <div>
       <div className="LoL-stats-div">
-      <h2>Match History</h2>
-      <ul>
-      {matchIds.map((matchId, index) => (
-        <LoLMatchBox key={matchId} puuid={puuid} matchId={matchId} />
-        ))}
-      </ul>
-    </div>
+        <ul>
+          {matchIds.map((matchId, index) => (
+            <LoLMatchBox key={matchId} puuid={puuid} matchId={matchId} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
