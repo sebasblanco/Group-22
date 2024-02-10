@@ -63,9 +63,24 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         <div style={{
             display: "flex",
             justifyContent: "center",
-          }}>
+        }}>
             <div className={matchData.info.participants[mainPlayerIndex].win ? 'match-box winner-box' : 'match-box loser-box'}>
+                <div style={{
+                    display: "flex",
+                    alignItems: "flex-start"
+                }}>
+                    <img
+                        src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                        matchData.info.participants[mainPlayerIndex].championName
+                        )}.png`}
+                        alt="Champion Splash"
+                    />
+                    <span className="kda">
+                    {matchData.info.participants[mainPlayerIndex].kills}/{matchData.info.participants[mainPlayerIndex].deaths}/{matchData.info.participants[mainPlayerIndex].assists}
+                    </span>
+                </div>
                 {/* List the participants */}
+                <div className="all-participants-list">
                 <ul className="match-participants blue-side">
                     {firstFiveParticipants.map((participant, index) => (
                         <li key={index}>
@@ -94,6 +109,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                         </li>
                     ))}
                 </ul>
+                </div>
             </div>
         </div>
     );

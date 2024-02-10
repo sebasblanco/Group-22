@@ -79,11 +79,13 @@ p {
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
-  display: "flex";
+  display: flex;
+  flex-direction: row;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   list-style: none;
   width: 50%;
 }
+
 .winner-box {
   border: 10px solid green;
   background-color: #C6EDC3;
@@ -93,7 +95,6 @@ p {
   border: 10px solid red;
   background-color: #FF9A98;
 }
-
 
 .match-participants {
   text-align: right;
@@ -112,4 +113,16 @@ p {
 
 .blue-side {
     margin-bottom: 15px;
+}
+
+.all-participants-list {
+  margin-right:0;
+  margin-left:auto;
+}
+
+.kda {
+  margin-left: 5px;
+  font-size: 24px;
+  font-weight: bold;
+
 }
