@@ -146,16 +146,32 @@ p {
   margin-left: 5px;
   margin-right: auto;
 }
+.item-list-container {
+  margin: auto;
+  padding: 10px;
+}
+
 .item-list {
-  display: flex;
-  align-items: center; /* Align items vertically */
-  list-style: none;
-  margin-top: -12px;
-  margin-left: 10px;
+  list-style-type: none;
+  text-align: center;
+}
+
+.item-list li {
+  display: inline-block;
 }
 
 .item-icon {
   width: 50px;
   height: auto;
-  margin-right: 5px; /* Add margin between icons if needed */
+  margin-right: 5px;
+}
+
+.game-duration {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.game-date {
+  font-size: 24px;
+  font-weight: bold;
 }

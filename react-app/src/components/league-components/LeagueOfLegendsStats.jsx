@@ -5,7 +5,7 @@ import LoLMasteryStats from "./LoLMasteryStats";
 import LoLMatchHistory from "./LoLMatchHistory";
 
 const LeagueOfLegendsStats = ({ username, tag }) => {
-  const [activeTab, setActiveTab] = useState("championMastery"); // State to track active tab
+  const [activeTab, setActiveTab] = useState("matchHistory"); // State to track active tab
   const [puuid, setPuuid] = useState(null);
 
   // Handler function to change active tab
@@ -28,7 +28,6 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     fetchData();
   }, [username, tag]);
 
-  // NavBar component
   // NavBar component
   const NavBar = () => {
     return (
@@ -62,7 +61,7 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
       <NavBar />
       {activeTab === "championMastery" && (
         <div>
-          <LoLMasteryStats username={username} tag={tag} puuid={puuid}/>{" "}
+          <LoLMasteryStats username={username} tag={tag} puuid={puuid} />{" "}
           {/* Render LoLMasteryStats component */}
         </div>
       )}

@@ -85,11 +85,9 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
 
   return (
     <div className="LoL-stats-div">
-      <p>LoL stats for {username}</p>
-      <p>Puuid: {puuid}</p>
+      <p>Champion Masteries for {username}</p>
 
       <div className="champion-list-container">
-        <p>Favorite Champions:</p>
         <ul className="champion-list">
           {championMastery.map((champion) => (
             <div

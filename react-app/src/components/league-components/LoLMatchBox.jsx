@@ -60,6 +60,23 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  function formatTime(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
+
+    return `${formattedMinutes}:${formattedSeconds}`;
+  }
+
+  function formatDate(unixTimestamp) {
+    const date = new Date(unixTimestamp); // Convert Unix timestamp to milliseconds
+    const month = String(date.getMonth());
+    const day = String(date.getDate());
+    const year = String(date.getFullYear()); // Get last 2 digits of the year
+    return `${month}/${day}/${year}`;
+  }
   const firstFiveParticipants = matchData.info.participants.slice(0, 5);
   const lastFiveParticipants = matchData.info.participants.slice(5);
 
@@ -101,7 +118,13 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                 flexDirection: "column",
               }}
             >
-              <div>{matchData.info.gameDuration}</div>
+              {/* Duration of game */}
+              <div className="game-date">
+                {formatDate(matchData.info.gameStartTimestamp)}
+              </div>
+              <div className="game-duration">
+                {formatTime(matchData.info.gameDuration)}
+              </div>
               <div className="kda">
                 {matchData.info.participants[mainPlayerIndex].kills} /{" "}
                 <span style={{ color: "red" }}>
@@ -110,52 +133,6 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                 / {matchData.info.participants[mainPlayerIndex].assists}
               </div>
             </div>
-
-            {/* All of the Items */}
-            <ul className="item-list">
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item0}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item1}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item2}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item3}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item4}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-              <li>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item5}.png.webp`}
-                  alt="SummonerSpell1"
-                  className="item-icon"
-                />
-              </li>
-            </ul>
           </div>
           <div className="two-summoner-icons">
             <img
@@ -169,6 +146,53 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               className="summoner-spell-img"
             />
           </div>
+        </div>
+        {/* All of the Items */}
+        <div className="item-list-container">
+          <ul className="item-list">
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item0}.png.webp`}
+                alt="Item 0"
+                className="item-icon"
+              />
+            </li>
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item1}.png.webp`}
+                alt="Item 1"
+                className="item-icon"
+              />
+            </li>
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item2}.png.webp`}
+                alt="Item 2"
+                className="item-icon"
+              />
+            </li>
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item3}.png.webp`}
+                alt="Item 3"
+                className="item-icon"
+              />
+            </li>
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item4}.png.webp`}
+                alt="Item 4"
+                className="item-icon"
+              />
+            </li>
+            <li>
+              <img
+                src={`https://cdn.darkintaqt.com/lol/c-assets/items/${matchData.info.participants[mainPlayerIndex].item5}.png.webp`}
+                alt="Item 5"
+                className="item-icon"
+              />
+            </li>
+          </ul>
         </div>
         {/* List the participants */}
         <div className="all-participants-list">
