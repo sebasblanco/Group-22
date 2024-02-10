@@ -177,3 +177,12 @@ p {
   font-size: 24px;
   font-weight: bold;
 }
+
+.rank-icon {
+  height: 200px;
+}
+
+.rank-text {
+  font-weight: bold;
+  font-size: 32px;
+}
