@@ -197,6 +197,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         <div className="item-list-container" style={{ width: "35%" }}>
           <ul className="item-list">
             {[0, 1, 2, 3, 4, 5].map((index) =>
+              // Sometimes the player will not have an item in a certain slot. If so, don't render image
               matchData.info.participants[mainPlayerIndex][`item${index}`] !==
               0 ? (
                 <li key={index}>
@@ -215,8 +216,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
           </ul>
         </div>
         {/* List the participants */}
-        <div className="all-participants-list">
-          <ul className="match-participants blue-side">
+        <div className="all-participants-list" style={{ width: "25%" }}>
+          <ul className="match-participants blue-side" style={{ width: "50%" }}>
             {firstFiveParticipants.map((participant, index) => (
               <li
                 key={index}
