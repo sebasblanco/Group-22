@@ -76,6 +76,8 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
       string = "Leblanc";
     } else if (string == "KaiSa") {
       string = "Kaisa";
+    } else if (string == "VelKoz") {
+      string = "Velkoz";
     }
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

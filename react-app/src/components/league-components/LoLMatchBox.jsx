@@ -12,6 +12,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                     `https://gamer-insights.azurewebsites.net/api/getmatchdata?code=Ourmnsm1rkNiHLBMUb_e_stQtY0tmn5_TqSkbwzj0aeWAzFuESDheA%3D%3D&matchID=${matchId}`
                 );
                 setMatchData(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error(error);
             }
@@ -27,14 +28,69 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     if (mainPlayerIndex === -1) {
         return <div>Main player not found in match data</div>;
     }
+
+    function FormatChampName(string) {
+        string = string.replace(/\s/g, "");
+        string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
+    
+        //Some champions have different names/formats for their pictures. Edge cases below:
+        if (string === "Wukong") {
+          string = "MonkeyKing";
+        } else if (string == "NunuWillump") {
+          string = "Nunu";
+        } else if (string == "KhaZix") {
+          string = "Khazix";
+        } else if (string == "ChoGath") {
+          string = "Chogath";
+        } else if (string == "KSante") {
+          string = "Ksante";
+        } else if (string == "BelVeth") {
+          string = "Belveth";
+        } else if (string == "LeBlanc") {
+          string = "Leblanc";
+        } else if (string == "KaiSa") {
+          string = "Kaisa";
+        } else if (string == "VelKoz") {
+          string = "Velkoz";
+        }
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
+    const firstFiveParticipants = matchData.info.participants.slice(0, 5);
+    const lastFiveParticipants = matchData.info.participants.slice(5);
         
-    return (
-        <div>
-            <div className={matchData.info.participants[mainPlayerIndex].win ? 'winner-box' : 'loser-box'}>
-                <ul className="match-participants">
-                    {matchData.info.participants.map((participant, index) => (
+      return (
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+          }}>
+            <div className={matchData.info.participants[mainPlayerIndex].win ? 'match-box winner-box' : 'match-box loser-box'}>
+                {/* List the participants */}
+                <ul className="match-participants blue-side">
+                    {firstFiveParticipants.map((participant, index) => (
                         <li key={index}>
                             {participant.riotIdGameName}
+                            <img
+                                src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                                participant.championName
+                                )}.png`}
+                                alt="Champion Splash"
+                                className="participant-champ-img"
+                            />
+                        </li>
+                    ))}
+                </ul>
+                <ul className="match-participants red-side">
+                    {lastFiveParticipants.map((participant, index) => (
+                        <li key={index}>
+                            {participant.riotIdGameName}
+                            <img
+                                src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                                participant.championName
+                                )}.png`}
+                                alt="Champion Splash"
+                                className="participant-champ-img"
+                            />
                         </li>
                     ))}
                 </ul>

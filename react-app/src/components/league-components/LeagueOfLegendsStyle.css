@@ -75,30 +75,41 @@ p {
   font-weight: bold;
 }
 
-.winner-box {
-  border: 10px solid green;
+.match-box {
   border-radius: 5px;
-  background-image: linear-gradient(#f8eddb, #e3e1d9);
   margin-bottom: 10px;
   padding: 10px;
   display: "flex";
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   list-style: none;
+  width: 50%;
+}
+.winner-box {
+  border: 10px solid green;
+  background-color: #C6EDC3;
 }
 
 .loser-box {
   border: 10px solid red;
-  border-radius: 5px;
-  background-image: linear-gradient(#f8eddb, #e3e1d9);
-  margin-bottom: 10px;
-  padding: 10px;
-  display: "flex";
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  list-style: none;
+  background-color: #FF9A98;
 }
 
 
 .match-participants {
   text-align: right;
   list-style: none;
+  font-size: 14px;
+}
+
+.participant-champ-img {
+  width: 30px;
+  margin-left: 5px;
+}
+
+.red-side {
+    margin-top: 15px;
+}
+
+.blue-side {
+    margin-bottom: 15px;
 }
