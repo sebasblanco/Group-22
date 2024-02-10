@@ -249,15 +249,13 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         </div>
         {/* Button for dropdown */}
         <button className="dropdown-button" onClick={toggleDropdown}>
-          {/* Arrow icon */}
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
             width="24"
             height="24"
             style={{ marginLeft: "-12px" }}
             transform={showDropdown ? "rotate(180)" : ""}
           >
+            {/* Draw the arrow */}
             <path d="M12 15.41l-6.29-6.29-1.41 1.41L12 18.23l7.71-7.71-1.41-1.41z" />
           </svg>
         </button>
