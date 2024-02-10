@@ -94,12 +94,21 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               style={{ marginRight: "10px" }} // Add margin between images if needed
             />
             {/* KDA information */}
-            <div className="kda">
-              {matchData.info.participants[mainPlayerIndex].kills} /{" "}
-              <span style={{ color: "red" }}>
-                {matchData.info.participants[mainPlayerIndex].deaths}{" "}
-              </span>
-              / {matchData.info.participants[mainPlayerIndex].assists}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <div>{matchData.info.gameDuration}</div>
+              <div className="kda">
+                {matchData.info.participants[mainPlayerIndex].kills} /{" "}
+                <span style={{ color: "red" }}>
+                  {matchData.info.participants[mainPlayerIndex].deaths}{" "}
+                </span>
+                / {matchData.info.participants[mainPlayerIndex].assists}
+              </div>
             </div>
 
             {/* All of the Items */}
@@ -165,7 +174,10 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         <div className="all-participants-list">
           <ul className="match-participants blue-side">
             {firstFiveParticipants.map((participant, index) => (
-              <li key={index}>
+              <li
+                key={index}
+                className={mainPlayerIndex === index ? "bold-text" : ""}
+              >
                 {participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
@@ -179,7 +191,14 @@ const LoLMatchBox = ({ matchId, puuid }) => {
           </ul>
           <ul className="match-participants red-side">
             {lastFiveParticipants.map((participant, index) => (
-              <li key={index}>
+              <li
+                key={index}
+                className={
+                  mainPlayerIndex === index + firstFiveParticipants.length
+                    ? "bold-text"
+                    : ""
+                }
+              >
                 {participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(

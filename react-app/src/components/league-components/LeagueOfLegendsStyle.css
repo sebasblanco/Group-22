@@ -15,6 +15,10 @@ p {
   font-size: 24px;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 .champion-list-container {
   padding: 10px;
   display: flex;
