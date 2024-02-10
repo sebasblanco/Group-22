@@ -192,3 +192,25 @@ p {
   font-weight: bold;
   font-size: 32px;
 }
+
+.dropdown-button {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 5px;
+}
+
+.dropdown-box {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  align-self: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  width: 60%;
+  border: 5px solid green;
+  background-color: #c6edc3;
+}

@@ -20,31 +20,11 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     fetchData();
   }, [matchId]);
 
-  // useEffect(() => {
-  //   if (matchData !== null) {
-  //     setMainPlayerIndex(
-  //       matchData.metadata.participants.findIndex(
-  //         (participant) => participant === puuid
-  //       )
-  //     );
-  //     if (mainPlayerIndex === -1) {
-  //       console.error("Main player not found in match data");
-  //       return;
-  //     }
+  const [showDropdown, setShowDropdown] = useState(false);
 
-  //     const fetchRankData = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           `https://gamer-insights.azurewebsites.net/api/getrankedbysummonerid?code=v3qS6VLz2yS0HAa0IYdwAFrW3Wu5FAgV8mCxjELLSfIHAzFufOcBdQ%3D%3D&summonerId=${matchData.info.participants[mainPlayerIndex].summonerId}`
-  //         );
-  //         setRankData(response.data);
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     };
-  //     fetchRankData();
-  //   }
-  // }, [matchData, puuid]);
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
 
   if (matchData === null) {
     return <div>Loading...</div>;
@@ -125,143 +105,174 @@ const LoLMatchBox = ({ matchId, puuid }) => {
   const lastFiveParticipants = matchData.info.participants.slice(5);
 
   return mainPlayerIndex !== null ? (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div>
       <div
-        className={
-          matchData.info.participants[mainPlayerIndex].win
-            ? "match-box winner-box"
-            : "match-box loser-box"
-        }
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
         <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
+          className={
+            matchData.info.participants[mainPlayerIndex].win
+              ? "match-box winner-box"
+              : "match-box loser-box"
+          }
         >
-          {/* The image and summoner spells */}
-          <div style={{ display: "flex", alignItems: "center:" }}>
-            <img
-              src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
-                matchData.info.participants[mainPlayerIndex].championName
-              )}.png`}
-              alt="Champion Splash"
-              style={{ marginRight: "10px" }} // Add margin between images if needed
-            />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            {/* The image and summoner spells */}
+            <div style={{ display: "flex", alignItems: "center:" }}>
+              <img
+                src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                  matchData.info.participants[mainPlayerIndex].championName
+                )}.png`}
+                alt="Champion Splash"
+                style={{ marginRight: "10px" }} // Add margin between images if needed
+              />
+            </div>
+            <div className="two-summoner-icons">
+              <img
+                src={`https://lolcdn.darkintaqt.com/cdn/spells/${matchData.info.participants[mainPlayerIndex].summoner1Id}`}
+                alt="SummonerSpell1"
+                className="summoner-spell-img"
+              />
+              <img
+                src={`https://lolcdn.darkintaqt.com/cdn/spells/${matchData.info.participants[mainPlayerIndex].summoner2Id}`}
+                alt="SummonerSpell2"
+                className="summoner-spell-img"
+              />
+            </div>
           </div>
-          <div className="two-summoner-icons">
-            <img
-              src={`https://lolcdn.darkintaqt.com/cdn/spells/${matchData.info.participants[mainPlayerIndex].summoner1Id}`}
-              alt="SummonerSpell1"
-              className="summoner-spell-img"
-            />
-            <img
-              src={`https://lolcdn.darkintaqt.com/cdn/spells/${matchData.info.participants[mainPlayerIndex].summoner2Id}`}
-              alt="SummonerSpell2"
-              className="summoner-spell-img"
-            />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              width: "20%",
+            }}
+          >
+            {/* KDA information */}
+            {/* Duration of game */}
+            <div className="game-date">{gameType(matchData.info.queueId)}</div>
+            <div className="kda">
+              {matchData.info.participants[mainPlayerIndex].kills} /{" "}
+              <span style={{ color: "red" }}>
+                {matchData.info.participants[mainPlayerIndex].deaths}{" "}
+              </span>
+              / {matchData.info.participants[mainPlayerIndex].assists}
+            </div>
+            <div className="game-duration">
+              {formatTime(matchData.info.gameDuration)}
+            </div>
+            <div className="game-date">
+              {formatDate(matchData.info.gameStartTimestamp)}
+            </div>
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            width: "20%",
-          }}
-        >
-          {/* KDA information */}
-          {/* Duration of game */}
-          <div className="game-date">{gameType(matchData.info.queueId)}</div>
-          <div className="kda">
-            {matchData.info.participants[mainPlayerIndex].kills} /{" "}
-            <span style={{ color: "red" }}>
-              {matchData.info.participants[mainPlayerIndex].deaths}{" "}
-            </span>
-            / {matchData.info.participants[mainPlayerIndex].assists}
+          {/* All of the Items */}
+          <div className="item-list-container" style={{ width: "35%" }}>
+            <ul className="item-list">
+              {[0, 1, 2, 3, 4, 5].map((index) =>
+                // Sometimes the player will not have an item in a certain slot. If so, don't render image
+                matchData.info.participants[mainPlayerIndex][`item${index}`] !==
+                0 ? (
+                  <li key={index}>
+                    <img
+                      src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
+                        matchData.info.participants[mainPlayerIndex][
+                          `item${index}`
+                        ]
+                      }.png.webp`}
+                      alt={`Item ${index}`}
+                      className="item-icon"
+                    />
+                  </li>
+                ) : null
+              )}
+            </ul>
           </div>
-          <div className="game-duration">
-            {formatTime(matchData.info.gameDuration)}
-          </div>
-          <div className="game-date">
-            {formatDate(matchData.info.gameStartTimestamp)}
-          </div>
-        </div>
-        {/* All of the Items */}
-        <div className="item-list-container" style={{ width: "35%" }}>
-          <ul className="item-list">
-            {[0, 1, 2, 3, 4, 5].map((index) =>
-              // Sometimes the player will not have an item in a certain slot. If so, don't render image
-              matchData.info.participants[mainPlayerIndex][`item${index}`] !==
-              0 ? (
-                <li key={index}>
+          {/* List the participants */}
+          <div className="all-participants-list" style={{ width: "25%" }}>
+            <ul
+              className="match-participants blue-side"
+              style={{ width: "50%" }}
+            >
+              {firstFiveParticipants.map((participant, index) => (
+                <li
+                  key={index}
+                  className={mainPlayerIndex === index ? "bold-text" : ""}
+                  title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
+                >
+                  {participant.riotIdGameName.length > 6
+                    ? participant.riotIdGameName.slice(0, 6) + "..."
+                    : participant.riotIdGameName}
                   <img
-                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
-                      matchData.info.participants[mainPlayerIndex][
-                        `item${index}`
-                      ]
-                    }.png.webp`}
-                    alt={`Item ${index}`}
-                    className="item-icon"
+                    src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                      participant.championName
+                    )}.png`}
+                    alt="Champion Splash"
+                    className="participant-champ-img"
                   />
                 </li>
-              ) : null
-            )}
-          </ul>
+              ))}
+            </ul>
+            <ul className="match-participants red-side">
+              {lastFiveParticipants.map((participant, index) => (
+                <li
+                  key={index}
+                  title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
+                  className={
+                    mainPlayerIndex === index + firstFiveParticipants.length
+                      ? "bold-text"
+                      : ""
+                  }
+                >
+                  {participant.riotIdGameName.length > 6
+                    ? participant.riotIdGameName.slice(0, 6) + "..."
+                    : participant.riotIdGameName}
+                  <img
+                    src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
+                      participant.championName
+                    )}.png`}
+                    alt="Champion Splash"
+                    className="participant-champ-img"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        {/* List the participants */}
-        <div className="all-participants-list" style={{ width: "25%" }}>
-          <ul className="match-participants blue-side" style={{ width: "50%" }}>
-            {firstFiveParticipants.map((participant, index) => (
-              <li
-                key={index}
-                className={mainPlayerIndex === index ? "bold-text" : ""}
-                title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
-              >
-                {participant.riotIdGameName.length > 6
-                  ? participant.riotIdGameName.slice(0, 6) + "..."
-                  : participant.riotIdGameName}
-                <img
-                  src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
-                    participant.championName
-                  )}.png`}
-                  alt="Champion Splash"
-                  className="participant-champ-img"
-                />
-              </li>
-            ))}
-          </ul>
-          <ul className="match-participants red-side">
-            {lastFiveParticipants.map((participant, index) => (
-              <li
-                key={index}
-                title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
-                className={
-                  mainPlayerIndex === index + firstFiveParticipants.length
-                    ? "bold-text"
-                    : ""
-                }
-              >
-                {participant.riotIdGameName.length > 6
-                  ? participant.riotIdGameName.slice(0, 6) + "..."
-                  : participant.riotIdGameName}
-                <img
-                  src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
-                    participant.championName
-                  )}.png`}
-                  alt="Champion Splash"
-                  className="participant-champ-img"
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Button for dropdown */}
+        <button className="dropdown-button" onClick={toggleDropdown}>
+          {/* Arrow icon */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            style={{ marginLeft: "-12px" }}
+            transform={showDropdown ? "rotate(180)" : ""}
+          >
+            <path d="M12 15.41l-6.29-6.29-1.41 1.41L12 18.23l7.71-7.71-1.41-1.41z" />
+          </svg>
+        </button>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {showDropdown && (
+          <div className="dropdown-box">
+            <p>Placeholder for scoreboard/more info</p>
+          </div>
+        )}
       </div>
     </div>
   ) : (
