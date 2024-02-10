@@ -126,6 +126,8 @@ p {
   margin-right: 0;
   margin-left: auto;
   display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .kda {

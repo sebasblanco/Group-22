@@ -77,6 +77,24 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     const year = String(date.getFullYear()); // Get last 2 digits of the year
     return `${month}/${day}/${year}`;
   }
+
+  function gameType(queueId) {
+    var string = "";
+    if (queueId == 420) {
+      string = "Ranked Solo/Duo";
+    } else if (queueId == 400) {
+      string = "Draft Pick";
+    } else if (queueId == 430) {
+      string = "Blind Pick";
+    } else if (queueId == 440) {
+      string = "Ranked Flex";
+    } else if (queueId == 450) {
+      string = "ARAM";
+    } else {
+      string = "Normal";
+    }
+    return string;
+  }
   const firstFiveParticipants = matchData.info.participants.slice(0, 5);
   const lastFiveParticipants = matchData.info.participants.slice(5);
 
@@ -119,6 +137,9 @@ const LoLMatchBox = ({ matchId, puuid }) => {
               }}
             >
               {/* Duration of game */}
+              <div className="game-date">
+                {gameType(matchData.info.queueId)}
+              </div>
               <div className="game-date">
                 {formatDate(matchData.info.gameStartTimestamp)}
               </div>
