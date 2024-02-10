@@ -87,13 +87,13 @@ p {
 }
 
 .winner-box {
-  border: 10px solid green;
-  background-color: #C6EDC3;
+  border: 5px solid green;
+  background-color: #c6edc3;
 }
 
 .loser-box {
-  border: 10px solid red;
-  background-color: #FF9A98;
+  border: 5px solid red;
+  background-color: #ff9a98;
 }
 
 .match-participants {
@@ -105,24 +105,39 @@ p {
 .participant-champ-img {
   width: 30px;
   margin-left: 5px;
+  border-radius: 10px;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 .red-side {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .blue-side {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .all-participants-list {
-  margin-right:0;
-  margin-left:auto;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .kda {
   margin-left: 5px;
   font-size: 24px;
   font-weight: bold;
+}
 
+.summoner-spell-img {
+  margin-top: 5px;
+  width: 45px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.two-summoner-icons {
+  margin-left: 5px;
+  margin-right: auto;
 }
