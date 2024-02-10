@@ -168,7 +168,6 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             />
           </div>
         </div>
-        {/* KDA information */}
         <div
           style={{
             display: "flex",
@@ -177,14 +176,9 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             width: "20%",
           }}
         >
+          {/* KDA information */}
           {/* Duration of game */}
           <div className="game-date">{gameType(matchData.info.queueId)}</div>
-          <div className="game-date">
-            {formatDate(matchData.info.gameStartTimestamp)}
-          </div>
-          <div className="game-duration">
-            {formatTime(matchData.info.gameDuration)}
-          </div>
           <div className="kda">
             {matchData.info.participants[mainPlayerIndex].kills} /{" "}
             <span style={{ color: "red" }}>
@@ -192,21 +186,32 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             </span>
             / {matchData.info.participants[mainPlayerIndex].assists}
           </div>
+          <div className="game-duration">
+            {formatTime(matchData.info.gameDuration)}
+          </div>
+          <div className="game-date">
+            {formatDate(matchData.info.gameStartTimestamp)}
+          </div>
         </div>
         {/* All of the Items */}
         <div className="item-list-container" style={{ width: "35%" }}>
           <ul className="item-list">
-            {[0, 1, 2, 3, 4, 5].map((index) => (
-              <li key={index}>
-                <img
-                  src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
-                    matchData.info.participants[mainPlayerIndex][`item${index}`]
-                  }.png.webp`}
-                  alt={`Item ${index}`}
-                  className="item-icon"
-                />
-              </li>
-            ))}
+            {[0, 1, 2, 3, 4, 5].map((index) =>
+              matchData.info.participants[mainPlayerIndex][`item${index}`] !==
+              0 ? (
+                <li key={index}>
+                  <img
+                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
+                      matchData.info.participants[mainPlayerIndex][
+                        `item${index}`
+                      ]
+                    }.png.webp`}
+                    alt={`Item ${index}`}
+                    className="item-icon"
+                  />
+                </li>
+              ) : null
+            )}
           </ul>
         </div>
         {/* List the participants */}

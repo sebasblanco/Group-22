@@ -170,6 +170,7 @@ p {
   width: 50px;
   height: auto;
   margin-right: 5px;
+  border-radius: 5px;
 }
 
 .game-duration {
