@@ -83,7 +83,7 @@ p {
   flex-direction: row;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   list-style: none;
-  width: 45%;
+  width: 60%;
 }
 
 .winner-box {
@@ -111,16 +111,17 @@ p {
 }
 
 .red-side {
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .blue-side {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
 }
 
 .all-participants-list {
   margin-right: 0;
   margin-left: auto;
+  display: flex;
 }
 
 .kda {

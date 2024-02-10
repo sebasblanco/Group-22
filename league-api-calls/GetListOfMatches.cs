@@ -24,7 +24,7 @@ namespace Company.Function
             _logger.LogInformation("GetListOfMatches trigger function processed a request.");
             _logger.LogInformation("puuid: " + puuid);
 
-            string url = $"https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=3&api_key={API_KEY}";
+            string url = $"https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=20&api_key={API_KEY}";
             _logger.LogInformation($"url: {url}");
 
 
