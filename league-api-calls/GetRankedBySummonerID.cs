@@ -11,6 +11,7 @@ namespace Company.Function
         private readonly ILogger<GetRankedBySummonerID> _logger;
         string ?API_KEY = System.Environment.GetEnvironmentVariable("API_KEY");
 
+
         public GetRankedBySummonerID(ILogger<GetRankedBySummonerID> logger)
         {
             _logger = logger;
@@ -21,7 +22,9 @@ namespace Company.Function
         {
             _logger.LogInformation("GetRankedBySummonerID trigger function processed a request.");
             string? summonerId = req.Query["summonerId"];
-            string url = $"https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key={API_KEY}";
+            string url = $"https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/{summonerId}?api_key=RGAPI-f5d2da28-49bc-419e-9950-02dfc97929a8";
+            _logger.LogInformation("url" + url);
+            _logger.LogInformation("api key" + API_KEY);
 
             try
             {
@@ -30,7 +33,7 @@ namespace Company.Function
 
                 var json = await response.Content.ReadAsStringAsync();
 
-                dynamic ?responseData = JsonSerializer.Deserialize<ExpandoObject>(json, new JsonSerializerOptions
+                dynamic ?responseData = JsonSerializer.Deserialize<List<dynamic>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });

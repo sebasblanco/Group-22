@@ -4,7 +4,8 @@ import "./LeagueOfLegendsStyle.css";
 
 const LoLMatchBox = ({ matchId, puuid }) => {
   const [matchData, setMatchData] = useState(null);
-
+  const [rankData, setRankData] = useState(null);
+  const [mainPlayerIndex, setMainPlayerIndex] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,20 +21,42 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     fetchData();
   }, [matchId]);
 
+  useEffect(() => {
+    if (matchData !== null) {
+      setMainPlayerIndex(
+        matchData.metadata.participants.findIndex(
+          (participant) => participant === puuid
+        )
+      );
+      if (mainPlayerIndex === -1) {
+        console.error("Main player not found in match data");
+        return;
+      }
+
+      const fetchRankData = async () => {
+        try {
+          const response = await axios.get(
+            `https://gamer-insights.azurewebsites.net/api/getrankedbysummonerid?code=v3qS6VLz2yS0HAa0IYdwAFrW3Wu5FAgV8mCxjELLSfIHAzFufOcBdQ%3D%3D&summonerId=${matchData.info.participants[mainPlayerIndex].summonerId}`
+          );
+          setRankData(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchRankData();
+    }
+  }, [matchData, puuid]);
+
   if (matchData === null) {
     return <div>Loading...</div>;
   }
 
-  const mainPlayerIndex = matchData.metadata.participants.findIndex(
-    (participant) => participant === puuid
-  );
-  if (mainPlayerIndex === -1) {
-    return <div>Main player not found in match data</div>;
-  }
-
-  const encryptedSummonerId =
-    matchData.info.participants[mainPlayerIndex].summonerId;
-  console.log(encryptedSummonerId);
+  // const mainPlayerIndex = matchData.metadata.participants.findIndex(
+  //   (participant) => participant === puuid
+  // );
+  // if (mainPlayerIndex === -1) {
+  //   return <div>Main player not found in match data</div>;
+  // }
 
   function FormatChampName(string) {
     string = string.replace(/\s/g, "");
@@ -102,7 +125,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
   const firstFiveParticipants = matchData.info.participants.slice(0, 5);
   const lastFiveParticipants = matchData.info.participants.slice(5);
 
-  return (
+  return mainPlayerIndex !== null ? (
     <div
       style={{
         display: "flex",
@@ -262,6 +285,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Loading...</div>
   );
 };
 
