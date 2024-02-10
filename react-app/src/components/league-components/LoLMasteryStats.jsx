@@ -13,6 +13,7 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
         const response = await axios.get(
           `https://gamer-insights.azurewebsites.net/api/getchampionmastery?code=kr0MFXnnRCrd4MUdqO2nv4IoaFsMotgiAKfVj2Hb-BFeAzFuSjNExg%3D%3D&puuid=${puuid}`
         );
+        
         setChampionMastery(response.data);
       } catch (error) {
         console.error(error);

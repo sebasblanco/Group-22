@@ -21,6 +21,7 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
           `https://gamer-insights.azurewebsites.net/api/leaguegetpuuid?code=S-qc4dIw6awRjX4zf2-8Fq5-F3sZjm2R1IicSv7YRN6cAzFusHAL1A%3D%3D&username=${username}&tag=${tag}`
         );
         setPuuid(response.data.puuid);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }

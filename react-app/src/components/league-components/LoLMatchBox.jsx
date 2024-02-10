@@ -31,6 +31,10 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     return <div>Main player not found in match data</div>;
   }
 
+  const encryptedSummonerId =
+    matchData.info.participants[mainPlayerIndex].summonerId;
+  console.log(encryptedSummonerId);
+
   function FormatChampName(string) {
     string = string.replace(/\s/g, "");
     string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
