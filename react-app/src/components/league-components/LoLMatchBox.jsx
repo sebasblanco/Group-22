@@ -224,8 +224,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                 className={mainPlayerIndex === index ? "bold-text" : ""}
                 title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
               >
-                {participant.riotIdGameName.length > 5
-                  ? participant.riotIdGameName.slice(0, 5) + "..."
+                {participant.riotIdGameName.length > 6
+                  ? participant.riotIdGameName.slice(0, 6) + "..."
                   : participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
@@ -248,8 +248,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                     : ""
                 }
               >
-                {participant.riotIdGameName.length > 5
-                  ? participant.riotIdGameName.slice(0, 5) + "..."
+                {participant.riotIdGameName.length > 6
+                  ? participant.riotIdGameName.slice(0, 6) + "..."
                   : participant.riotIdGameName}
                 <img
                   src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
