@@ -45,7 +45,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     } else if (string == "ChoGath") {
       string = "Chogath";
     } else if (string == "KSante") {
-      string = "Ksante";
+      string = "KSante";
     } else if (string == "BelVeth") {
       string = "Belveth";
     } else if (string == "LeBlanc") {
@@ -54,6 +54,8 @@ const LoLMatchBox = ({ matchId, puuid }) => {
       string = "Kaisa";
     } else if (string == "VelKoz") {
       string = "Velkoz";
+    } else if (string == "FiddleSticks") {
+      string = "Fiddlesticks";
     }
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

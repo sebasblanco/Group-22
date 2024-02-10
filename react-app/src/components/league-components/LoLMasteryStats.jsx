@@ -58,7 +58,6 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
     string = string.replace(/\s/g, "");
     string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
 
-
     //Some champions have different names/formats for their pictures. Edge cases below:
     if (string === "Wukong") {
       string = "MonkeyKing";
@@ -69,7 +68,7 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
     } else if (string == "ChoGath") {
       string = "Chogath";
     } else if (string == "KSante") {
-      string = "Ksante";
+      string = "KSante";
     } else if (string == "BelVeth") {
       string = "Belveth";
     } else if (string == "LeBlanc") {
@@ -78,6 +77,8 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
       string = "Kaisa";
     } else if (string == "VelKoz") {
       string = "Velkoz";
+    } else if (string == "FiddleSticks") {
+      string = "Fiddlesticks";
     }
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -96,11 +97,14 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
               style={{ display: "flex", alignItems: "center" }}
             >
               <span className="champion-info">
-                <text className="champion-name">{getChampionNameFromId(champion.championId)}</text>
-                <text>, Mastery:{" "} {champion.championLevel}</text>
-                , Champion Points:{" "}
-                <text className="mastery-points">{champion.championPoints}</text>
-                
+                <text className="champion-name">
+                  {getChampionNameFromId(champion.championId)}
+                </text>
+                <text>, Mastery: {champion.championLevel}</text>, Champion
+                Points:{" "}
+                <text className="mastery-points">
+                  {champion.championPoints}
+                </text>
               </span>
               <img
                 src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/champion/${FormatChampName(
