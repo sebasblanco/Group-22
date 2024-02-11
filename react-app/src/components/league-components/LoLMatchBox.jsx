@@ -348,6 +348,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             key={null}
             matchData={matchData}
             runeData={runeData}
+            mainPlayerIndex={mainPlayerIndex}
           ></LoLDropDownMenu>
         )}
       </div>

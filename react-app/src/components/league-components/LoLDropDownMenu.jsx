@@ -130,7 +130,11 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
           />
         </div>
         <div
-          className="column dropdown-player-name"
+          className={
+            mainPlayerIndex === playerIndex
+              ? "bold-text column dropdown-playername"
+              : "column dropdown-playername"
+          }
           title={`${participant.riotIdGameName}#${participant.riotIdTagline}`}
         >
           {participant.riotIdGameName}
