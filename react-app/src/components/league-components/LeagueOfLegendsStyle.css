@@ -167,6 +167,18 @@ p {
   display: inline-block;
 }
 
+.rune-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.rune-list li {
+  display: inline-block;
+}
+
+.rune-icon {
+  width: 80px;
+}
 .item-icon {
   width: 50px;
   height: auto;

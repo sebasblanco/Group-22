@@ -4,7 +4,22 @@ import "./LeagueOfLegendsStyle.css";
 
 const LoLMatchBox = ({ matchId, puuid }) => {
   const [matchData, setMatchData] = useState(null);
-  const [rankData, setRankData] = useState(null);
+  const [runeData, setRuneData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://raw.githubusercontent.com/ZackCampbell/Statix/master/resources/runesReforged.json`
+        );
+        setRuneData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(runeData);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -82,6 +97,28 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     const day = String(date.getDate());
     const year = String(date.getFullYear()); // Get last 2 digits of the year
     return `${month}/${day}/${year}`;
+  }
+
+  function getStyle(index, firstOrSecond) {
+    if (matchData !== null && runeData !== null)
+      var styleID =
+        matchData.info.participants[index].perks.styles[firstOrSecond].style;
+    var styleName = runeData.find((styleName) => styleName.id === styleID);
+    return styleName.key;
+  }
+
+  function getKeyStone(index) {
+    if (matchData !== null && runeData !== null) {
+      var styleID = matchData.info.participants[index].perks.styles[0].style;
+      var styleName = runeData.find((style) => style.id === styleID).key;
+      var keyStoneID =
+        matchData.info.participants[index].perks.styles[0].selections[0].perk;
+      var keyStoneName = runeData
+        .find((style) => style.key === styleName)
+        .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
+      console.log(keyStoneName);
+      return keyStoneName;
+    }
   }
 
   function gameType(queueId) {
@@ -195,9 +232,34 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                 ) : null
               )}
             </ul>
+            <ul className="rune-list">
+              <li>
+                {/* Primary rune */}
+                <img
+                  src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/perk-images/Styles/${getStyle(
+                    mainPlayerIndex,
+                    0
+                  )}/${getKeyStone(mainPlayerIndex)}/${
+                    getKeyStone(mainPlayerIndex) === "LethalTempo"
+                      ? "LethalTempoTemp"
+                      : getKeyStone(mainPlayerIndex)
+                  }.png`}
+                  alt={`Keystone`}
+                  className="rune-icon"
+                />
+              </li>
+              <li>
+                {/* Secondary rune */}
+                <img
+                  src={`https://static.bigbrain.gg/assets/lol/runes/${matchData.info.participants[mainPlayerIndex].perks.styles[1].style}.png`}
+                  alt={`Keystone`}
+                  className="rune-icon"
+                />
+              </li>
+            </ul>
           </div>
           {/* List the participants */}
-          <div className="all-participants-list" style={{ width: "25%" }}>
+          <div className="all-participants-list" style={{ width: "27%" }}>
             <ul
               className="match-participants blue-side"
               style={{ width: "50%" }}
