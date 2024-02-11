@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
+import LoLDropDownMenu from "./LoLDropDownMenu";
 
 const LoLMatchBox = ({ matchId, puuid }) => {
   const [matchData, setMatchData] = useState(null);
@@ -116,7 +117,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
       var keyStoneName = runeData
         .find((style) => style.key === styleName)
         .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
-      console.log(keyStoneName);
+      // console.log(keyStoneName);
       if (keyStoneName === "Aftershock") {
         keyStoneName = "VeteranAftershock";
       }
@@ -143,6 +144,17 @@ const LoLMatchBox = ({ matchId, puuid }) => {
   }
   const firstFiveParticipants = matchData.info.participants.slice(0, 5);
   const lastFiveParticipants = matchData.info.participants.slice(5);
+
+  var winningTeamParticipants;
+  var losingTeamParticipants;
+
+  if (matchData.info.teams[0].win) {
+    winningTeamParticipants = firstFiveParticipants;
+    losingTeamParticipants = lastFiveParticipants;
+  } else {
+    winningTeamParticipants = lastFiveParticipants;
+    losingTeamParticipants = firstFiveParticipants;
+  }
 
   return mainPlayerIndex !== null ? (
     <div>
@@ -173,7 +185,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                   matchData.info.participants[mainPlayerIndex].championName
                 )}.png`}
                 alt="Champion Splash"
-                style={{ marginRight: "10px" }} // Add margin between images if needed
+                style={{ marginRight: "10px" }}
               />
             </div>
             <div className="two-summoner-icons">
@@ -332,9 +344,11 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         }}
       >
         {showDropdown && (
-          <div className="dropdown-box">
-            <p>Placeholder for scoreboard/more info</p>
-          </div>
+          <LoLDropDownMenu
+            key={null}
+            matchData={matchData}
+            runeData={runeData}
+          ></LoLDropDownMenu>
         )}
       </div>
     </div>

@@ -15,6 +15,10 @@ p {
   font-size: 24px;
 }
 
+.remove-all-styles {
+  all: revert;
+}
+
 .bold-text {
   font-weight: bold;
 }
@@ -112,6 +116,16 @@ p {
   border-radius: 10px;
   margin-bottom: 1px;
   margin-top: 1px;
+}
+
+.dropdown-champ-img {
+  width: 30px;
+  border-radius: 10px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .red-side {
@@ -221,14 +235,84 @@ p {
 
 .dropdown-box {
   border-radius: 5px;
-  margin-bottom: 5px;
-  align-self: center;
+  margin-bottom: 20px;
+  margin-top: -5px;
   padding: 10px;
-  display: flex;
-  flex-direction: row;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  list-style: none;
   width: 60%;
-  border: 5px solid green;
-  background-color: #c6edc3;
+  border: 5px solid black;
+  border-top: none;
+  background-image: linear-gradient(#f8eddb, #e3e1d9);
+  margin-left: -20px;
+}
+
+.dropdown-box-row {
+  display: grid;
+  grid-template-columns: 5% 15% 10% 10% 10% 30% 20%;
+  margin-left: -32px;
+}
+
+.column {
+  border: 1px solid #ccc;
+}
+
+.winning-team-text {
+  font-size: 40px;
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.losing-team-text {
+  font-size: 40px;
+  color: darkred;
+  font-weight: bold;
+}
+
+.dropdown-container {
+  margin-bottom: 20px;
+}
+
+.dropdown-image {
+}
+
+.dropdown-player-name {
+}
+
+.dropdown-KDA {
+}
+
+.dropdown-rune-icon {
+  width: 50%;
+}
+.null-item {
+  background-color: grey;
+}
+
+.dropdown-summoner-spells {
+}
+
+.dropdown-item-build {
+}
+
+.dropdown-damage {
+}
+
+.damage-progress-bar {
+  width: 100%;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.progress {
+  height: 100%;
+  background-color: rgb(2, 255, 2);
+  border-radius: 5px;
+}
+
+.damage-label {
+  position: relative;
+  top: -4px;
+  text-align: center;
+  font-weight: bold;
 }
