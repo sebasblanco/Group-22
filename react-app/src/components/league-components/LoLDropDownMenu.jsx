@@ -213,13 +213,21 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
   return (
     <div className="dropdown-box">
       <ul style={{ listStyle: "none" }}>
-        <div className="losing-team-text">Defeat</div>
+        {matchData.info.teams[0].win ? (
+          <div className="winning-team-text">Victory</div>
+        ) : (
+          <div className="losing-team-text">Defeat</div>
+        )}
         {makeRow(0)}
         {makeRow(1)}
         {makeRow(2)}
         {makeRow(3)}
         {makeRow(4)}
-        <div className="winning-team-text">Victory</div>
+        {matchData.info.teams[0].win ? (
+          <div className="losing-team-text">Defeat</div>
+        ) : (
+          <div className="winning-team-text">Victory</div>
+        )}
         {makeRow(5)}
         {makeRow(6)}
         {makeRow(7)}
