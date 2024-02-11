@@ -92,10 +92,10 @@ const LoLMatchBox = ({ matchId, puuid }) => {
   }
 
   function formatDate(unixTimestamp) {
-    const date = new Date(unixTimestamp); // Convert Unix timestamp to milliseconds
-    const month = String(date.getMonth());
+    const date = new Date(unixTimestamp);
+    const month = String(date.getMonth() + 1);
     const day = String(date.getDate());
-    const year = String(date.getFullYear()); // Get last 2 digits of the year
+    const year = String(date.getFullYear()).substring(2);
     return `${month}/${day}/${year}`;
   }
 
@@ -117,6 +117,9 @@ const LoLMatchBox = ({ matchId, puuid }) => {
         .find((style) => style.key === styleName)
         .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
       console.log(keyStoneName);
+      if (keyStoneName === "Aftershock") {
+        keyStoneName = "VeteranAftershock";
+      }
       return keyStoneName;
     }
   }
