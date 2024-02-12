@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
-import "./LolMatchBox";
-import LoLMatchBox from "./LolMatchBox";
+import "./LoLMatchBox";
+import LoLMatchBox from "./LoLMatchBox";
 
 const LoLMatchHistory = ({ username, tag, puuid }) => {
   const [matchIds, setMatchIds] = useState([]);
