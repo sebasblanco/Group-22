@@ -70,26 +70,15 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
   }
 
   const DamageBar = ({ the_participant, winLose }) => {
-    // Calculate the percentage of damage dealt by the player relative to the team's total damage
-    var teamDamage = 0;
-    if (the_participant.teamId === 100) {
-      for (var i = 0; i < 5; i++) {
-        var participant = matchData.info.participants[i];
-        teamDamage = teamDamage + participant.totalDamageDealtToChampions;
-      }
-    } else {
-      for (var i = 5; i < 10; i++) {
-        var participant = matchData.info.participants[i];
-        teamDamage = teamDamage + participant.totalDamageDealtToChampions;
-      }
+    // Calculate the percentage of damage dealt by the player relative to the lobby's high damage
+    var maxDamage = 0;
+    for (var i = 0; i < 10; i++) {
+      var participant = matchData.info.participants[i];
+      maxDamage = Math.max(maxDamage, participant.totalDamageDealtToChampions);
     }
     //This makes the bars look more relative to eachother
-    var playerDamage = the_participant.totalDamageDealtToChampions;
-    const teammateDamageSum = teamDamage - playerDamage;
-    const averageTeammateDamage = teammateDamageSum / 4;
-    const damageRatio = playerDamage / averageTeammateDamage;
-    const scaledRatio = Math.min(damageRatio / 2.5, 1);
-    const percentage = scaledRatio * 100;
+    const playerDamage = the_participant.totalDamageDealtToChampions;
+    const percentage = (playerDamage / maxDamage) * 100;
     const backgroundColor = winLose ? "green" : "red";
     return (
       <div className="damage-progress-bar">
