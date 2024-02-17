@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LeagueOfLegendsStats from "./league-components/LeagueOfLegendsStats";
+import OWLStats from "./OWL-components/OWLStats";
 
 function HtmlForm() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -25,7 +26,12 @@ function HtmlForm() {
       if (selectedItem === "League of Legends") {
         const [gameName, tag] = username.split("#");
         setGameStats(<LeagueOfLegendsStats username={gameName} tag={tag} />);
-      } else {
+      } 
+      else if (selectedItem === "Overwatch") {
+        const [gameName, tag] = username.split("#");
+        setGameStats(<OWLStats username={gameName} tag={tag} />);
+      } 
+      else {
         // Handle other games here if needed
         setGameStats(null); // Clear game stats if not applicable
       }
@@ -55,27 +61,9 @@ function HtmlForm() {
                 <a
                   className="dropdown-item"
                   href="#"
-                  onClick={() => handleItemClick("World of Warcraft")}
+                  onClick={() => handleItemClick("Overwatch")}
                 >
-                  World of Warcraft
-                </a>
-              </li>
-              <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={() => handleItemClick("Diablo IV")}
-                >
-                  Diablo IV
-                </a>
-              </li>
-              <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onClick={() => handleItemClick("Starcraft")}
-                >
-                  Starcraft
+                  Overwatch
                 </a>
               </li>
               <li>
