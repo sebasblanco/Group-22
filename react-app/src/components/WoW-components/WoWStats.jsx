@@ -3,7 +3,7 @@ import axios from "axios";
 
 const WoWStats = ({ charactername, realm }) => {
     const [playerStats, setPlayerStats] = useState(null);
-    
+    let accessToken = null;
     useEffect(() => {
         const fetchAccessToken = async () => {
             try {
@@ -24,7 +24,7 @@ const WoWStats = ({ charactername, realm }) => {
                     return map;
                 }, {});*/
 
-                const accessToken = response.data.access_token;
+                accessToken = response.data.access_token;
                 console.log("Access Token:", accessToken);
 
                 fetchPlayerStats(accessToken);
@@ -82,7 +82,7 @@ const WoWStats = ({ charactername, realm }) => {
             {playerStats && (
                 <div>
                     <h2>Character Stats:</h2>
-                    <p>Character Name: {playerStats.data.character}</p>
+                    <p>Character Name: {JSON.stringify(playerStats)}</p>
                     
                 </div>
             )}
