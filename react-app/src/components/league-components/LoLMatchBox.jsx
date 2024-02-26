@@ -114,10 +114,17 @@ const LoLMatchBox = ({ matchId, puuid }) => {
       var styleName = runeData.find((style) => style.id === styleID).key;
       var keyStoneID =
         matchData.info.participants[index].perks.styles[0].selections[0].perk;
-      var keyStoneName = runeData
-        .find((style) => style.key === styleName)
-        .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
-      // console.log(keyStoneName);
+      console.log(keyStoneID);
+      if (keyStoneID !== 8369) {
+        var keyStoneName = runeData
+          .find((style) => style.key === styleName)
+          .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
+      }
+
+      console.log(keyStoneName);
+      if (keyStoneID === 8369) {
+        keyStoneName = "FirstStrike";
+      }
       if (keyStoneName === "Aftershock") {
         keyStoneName = "VeteranAftershock";
       }
