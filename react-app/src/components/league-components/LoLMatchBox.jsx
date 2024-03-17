@@ -234,7 +234,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             </div>
           </div>
           {/* All of the Items */}
-          <div className="item-list-container" style={{ width: "35%" }}>
+          <div className="item-list-container" style={{ width: "40%" }}>
             <ul className="item-list">
               {[0, 1, 2, 3, 4, 5].map((index) =>
                 // Sometimes the player will not have an item in a certain slot. If so, don't render image
