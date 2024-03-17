@@ -38,7 +38,7 @@ const LoLMatchHistory = ({ username, tag, puuid }) => {
     };
     fetchData();
   }, [puuid]);
-  console.log(summonerData);
+  // console.log(summonerData);
 
   //Find the summoner's rank from id
   useEffect(() => {
@@ -54,40 +54,74 @@ const LoLMatchHistory = ({ username, tag, puuid }) => {
     };
     fetchData();
   }, [summonerData]);
+  console.log("Below is ranked data");
   console.log(rankData);
 
   function formatToLower(str) {
     return str.toLowerCase();
   }
 
+  const rankDisplay = (rankData) => {
+    if (rankData.length === 0) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <span className="rank-text">
+            {username}#{tag}
+          </span>
+          <img
+            src={
+              "https://trackercdn.com/cdn/tracker.gg/lol/ranks/2022/unranked.png"
+            }
+            alt="Item 2"
+            className="rank-icon"
+          />
+          <span style={{ marginBottom: 15, marginTop: -25 }}>
+            <span className="rank-text"> Unranked</span>{" "}
+          </span>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <span className="rank-text">
+            {username}#{tag}
+          </span>
+          <img
+            src={
+              "https://trackercdn.com/cdn/tracker.gg/lol/ranks/2022/" +
+              formatToLower(rankData[0].tier) +
+              ".png"
+            }
+            alt="Item 2"
+            className="rank-icon"
+          />
+          <span style={{ marginBottom: 15, marginTop: -25 }}>
+            <span className="rank-text">
+              {rankData[0].tier} {rankData[0].rank}
+            </span>{" "}
+            {rankData[0].leaguePoints}LP
+          </span>
+        </div>
+      );
+    }
+  };
+  console.log(puuid);
+
   return rankData !== null ? (
     <div className="LoL-stats-div">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <span className="rank-text">
-          {username}#{tag}
-        </span>
-        <img
-          src={
-            "https://trackercdn.com/cdn/tracker.gg/lol/ranks/2022/" +
-            formatToLower(rankData[0].tier) +
-            ".png"
-          }
-          alt="Item 2"
-          className="rank-icon"
-        />
-        <span style={{ marginBottom: 15, marginTop: -25 }}>
-          <span className="rank-text">
-            {rankData[0].tier} {rankData[0].rank}
-          </span>{" "}
-          {rankData[0].leaguePoints}LP
-        </span>
-      </div>
+      {rankDisplay(rankData)}
       <ul>
         {matchIds.map((matchId, index) => (
           <LoLMatchBox key={matchId} puuid={puuid} matchId={matchId} />
