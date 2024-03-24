@@ -3,8 +3,11 @@ import axios from "axios";
 
 const WoWStats = ({ charactername, realm }) => {
     const [playerStats, setPlayerStats] = useState(null);
+    const [assetsMap, setAssetsMap] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     let accessToken = null;
     useEffect(() => {
+        setIsLoading(true);
         const fetchAccessToken = async () => {
             try {
                 const response = await axios.post(
@@ -18,16 +21,12 @@ const WoWStats = ({ charactername, realm }) => {
                         },
                     }
                 );
-                /*
-                const assetsMap = response.data.assets.reduce((map, asset) => {
-                    map[asset.key] = asset.value;
-                    return map;
-                }, {});*/
 
                 accessToken = response.data.access_token;
                 console.log("Access Token:", accessToken);
 
                 fetchPlayerStats(accessToken);
+                setIsLoading(false);
             } catch (error) {
                 console.error("Error:", error.message);
             }
@@ -37,8 +36,7 @@ const WoWStats = ({ charactername, realm }) => {
     }, []);
 
     const fetchPlayerStats = async (accessToken) => {
-        try
-        {
+        try {
             const response = await axios.get(         // Using realm = illidan and character = horseboy for testing
                 `https://us.api.blizzard.com/profile/wow/character/${realm}/${charactername}/character-media?namespace=profile-us&locale=en_US&access_token=${accessToken}`,
                 {
@@ -47,8 +45,15 @@ const WoWStats = ({ charactername, realm }) => {
                     },
                 }
             );
-           
-            
+
+            // Create a map of assets from response
+            const tempMap = response.data.assets.reduce((map, asset) => {
+                map[asset.key] = asset.value;
+                return map;
+            }, {});
+            // Set variable to be used for display
+            setAssetsMap(tempMap);
+
             console.log(response.data);
             setPlayerStats(response.data);
         }
@@ -79,13 +84,21 @@ const WoWStats = ({ charactername, realm }) => {
     return (
         <div>
             <NavBar />
-            {playerStats && (
-                <div>
-                    <h2>Character Stats:</h2>
-                    <p>Character Name: {JSON.stringify(playerStats)}</p>
-                    
-                </div>
-            )}
+            {(function () {
+                if (playerStats != null && assetsMap != null) {
+                    return <div>
+                        <h2>Character Sheet for {playerStats.character.name}:</h2>
+                        <img src={assetsMap.avatar}></img>
+                        <img src={assetsMap.inset}></img>
+                    </div>;
+                }
+                else if (isLoading) {
+                    return <h2>Loading...</h2>
+                }
+                else {
+                    return <h2>Sorry, we couldn't find the character you're looking for.</h2>;
+                }
+            })()}
         </div>
     );
 };
