@@ -21,10 +21,16 @@ namespace Company.Function
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
             string? puuid = req.Query["puuid"];
+            string? count = req.Query["count"];
+
+            if (count == null) {
+                count = "5";
+            }
             _logger.LogInformation("GetListOfMatches trigger function processed a request.");
             _logger.LogInformation("puuid: " + puuid);
+            _logger.LogInformation("Count: " + count);
 
-            string url = $"https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count=5&api_key={API_KEY}";
+            string url = $"https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids?start=0&count={count}&api_key={API_KEY}";
             _logger.LogInformation($"url: {url}");
 
 
