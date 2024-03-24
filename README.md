@@ -1,6 +1,9 @@
 # Group-22
 
 React-app
+
+For first time set up, run 'npm install --save react-circular-progressbar'
+
 Open folder, run 'npm run dev'
 
 Sources:
