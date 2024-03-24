@@ -1,20 +1,20 @@
 
 class WoWService {
     async downloadCharacterMediaAsset(mediaUrl) {
-    const tmpName = `${tmp.tmpNameSync()}.png`;
-    const response = await fetch(mediaUrl);
-    await new Promise((resolve, reject) => {
-        const fileWriteStream = fs.createWriteStream(tmpName);
-        response.body.pipe(fileWriteStream)
-            .on("finish", () => {
-                resolve(tmpName);
-            })
-            .on("error", (err) => {
-                reject(err);
-            });
-    });
-    return tmpName;
-}
+        const tmpName = `${tmp.tmpNameSync()}.png`;
+        const response = await fetch(mediaUrl);
+        await new Promise((resolve, reject) => {
+            const fileWriteStream = fs.createWriteStream(tmpName);
+            response.body.pipe(fileWriteStream)
+                .on("finish", () => {
+                    resolve(tmpName);
+                })
+                .on("error", (err) => {
+                    reject(err);
+                });
+        });
+        return tmpName;
+    }
 
     async generateImage(character, characterMedia) {
         const { inset: bustUrl } = characterMedia;
