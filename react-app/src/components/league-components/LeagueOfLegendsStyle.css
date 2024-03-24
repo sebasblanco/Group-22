@@ -225,6 +225,11 @@ p {
   font-size: 32px;
 }
 
+.winrate-text {
+  font-weight: bold;
+  font-size: 24px;
+}
+
 .dropdown-button {
   border-radius: 5px;
   margin-bottom: 5px;

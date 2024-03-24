@@ -3,6 +3,7 @@ import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 import "./LoLMatchBox";
 import LoLMatchBox from "./LoLMatchBox";
+import LoLWinrateCircle from "./LoLWinrateCircle";
 
 const LoLMatchHistory = ({ username, tag, puuid }) => {
   const [matchIds, setMatchIds] = useState([]);
@@ -121,7 +122,19 @@ const LoLMatchHistory = ({ username, tag, puuid }) => {
 
   return rankData !== null ? (
     <div className="LoL-stats-div">
-      {rankDisplay(rankData)}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "100px",
+        }}
+      >
+        {rankDisplay(rankData)}
+        <span style={{ width: "200px" }}>
+          <LoLWinrateCircle rankData={rankData} />
+        </span>
+      </div>
       <ul>
         {matchIds.map((matchId, index) => (
           <LoLMatchBox key={matchId} puuid={puuid} matchId={matchId} />
