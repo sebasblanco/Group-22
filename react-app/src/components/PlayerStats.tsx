@@ -145,9 +145,13 @@ function HtmlForm() {
         </form>
         
         <br />
-        <h4>Game Stats</h4>
-        {/* Conditionally load the stats for the selected game */}
-        {gameStats}
+
+        <hr />
+        
+        <h4>General Game Stats</h4>
+        <button type="submit" className="btn btn-primary">
+          Go
+        </button>
       </div>
     </>
   );
