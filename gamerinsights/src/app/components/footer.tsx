@@ -3,7 +3,7 @@ import { JSX, SVGProps } from "react"
 
 const navigation = {
     solutions: [
-        { name: 'Paywind for Advisors', href: '#' },
+        { name: 'Game Statistics', href: '#' },
     ],
     support: [
         { name: 'Resources', href: 'https://info.paywind.io' },
