@@ -11,7 +11,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "../../../components/ui/navigation-menu"
+} from "../../components/ui/navigation-menu"
 
 // import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 

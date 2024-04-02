@@ -5,7 +5,7 @@ import { Bars3Icon, ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outli
 import Link from 'next/link'
 import { ModeToggle } from './DarkModeToggle'
 import { PagesDropDown } from './pagesdropdown'
-import { Button } from '../../../components/ui/button';
+import { Button } from '../../components/ui/button';
 import Image from 'next/image'
 import { GithubIcon } from 'lucide-react'
 
@@ -71,7 +71,7 @@ export default function Header() {
                 <div className='flex flex-wrap justify-between items-center mx-auto px-4 xl:max-w-screen-xl'>
                     <div className="flex lg:flex-1 ">
                         <Link href="/" className="flex ">
-                            <img src="gamerinsights.svg" alt='test' className='h-[50px] w-auto mt-5' />
+                            <img src="gamerinsightslogo.svg" alt='test' className='h-[50px] w-auto mt-5' />
                         </Link>
                     </div>
                     <div className="flex lg:hidden">

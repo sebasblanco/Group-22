@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { Button } from "../../../components/ui/button"
+import { Button } from "../../components/ui/button"
 
 
 import { motion } from "framer-motion";
@@ -45,9 +45,9 @@ export default function Body() {
 
     return (
         <div>
-            <div className="relative pt-10 flex items-center justify-center">
+            <div className="relative pt-10 flex items-center justify-center dark:bg-dot-white/15">
                 {/* <GlowingStarsHeroBackground className="relative pt-10 flex items-center justify-center"> */}
-                <div className="relative pt-10 h-[50rem] flex items-center justify-center z-20">
+                <div className="relative pt-10 h-[50rem] flex items-center justify-center z-20 ">
 
                     <div className="py-15 sm:py-15 lg:pb-40">
                         <TypewriterEffectSmooth words={words} className="z-20" />

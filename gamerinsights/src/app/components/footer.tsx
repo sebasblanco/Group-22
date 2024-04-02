@@ -72,7 +72,7 @@ export default function Footer() {
             <div className="mx-auto max-w-screen-xl px-6 pb-8 lg:px-4 ">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <Link href="/">
-                        <img src="gamerinsights.svg" alt='test' className='h-[50px] w-auto' />
+                        <img src="gamerinsightslogo.svg" alt='test' className='h-[50px] w-auto' />
                     </Link>
                     <div className="mt-16 grid grid-cols-2 gap-8 col-span-2 xl:mt-0">
                         <div className="md:grid md:grid-cols-2 md:gap-8">
