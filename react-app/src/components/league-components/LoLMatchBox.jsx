@@ -19,7 +19,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
     };
     fetchData();
   }, []);
-  console.log(runeData);
+  // console.log(runeData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -114,10 +114,17 @@ const LoLMatchBox = ({ matchId, puuid }) => {
       var styleName = runeData.find((style) => style.id === styleID).key;
       var keyStoneID =
         matchData.info.participants[index].perks.styles[0].selections[0].perk;
-      var keyStoneName = runeData
-        .find((style) => style.key === styleName)
-        .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
+      // console.log(keyStoneID);
+      if (keyStoneID !== 8369) {
+        var keyStoneName = runeData
+          .find((style) => style.key === styleName)
+          .slots[0].runes.find((rune) => rune.id === keyStoneID).key;
+      }
+
       // console.log(keyStoneName);
+      if (keyStoneID === 8369) {
+        keyStoneName = "FirstStrike";
+      }
       if (keyStoneName === "Aftershock") {
         keyStoneName = "VeteranAftershock";
       }
@@ -227,7 +234,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             </div>
           </div>
           {/* All of the Items */}
-          <div className="item-list-container" style={{ width: "35%" }}>
+          <div className="item-list-container" style={{ width: "40%" }}>
             <ul className="item-list">
               {[0, 1, 2, 3, 4, 5].map((index) =>
                 // Sometimes the player will not have an item in a certain slot. If so, don't render image

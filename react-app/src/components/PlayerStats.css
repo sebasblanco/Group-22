@@ -1,0 +1,23 @@
+.form {
+    width: 100vw;
+    height: 40vw;
+    align-content: center;
+    color: black;
+    background-image: url('bg.png');
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color:rgba(206, 255, 253, 0.448);
+}
+
+.title {
+    margin: 1%;
+    align-content: center;
+    color: black;
+}
+
+.playerStats {
+    margin: 1%;
+    align-content: center;
+    color: black;
+}
