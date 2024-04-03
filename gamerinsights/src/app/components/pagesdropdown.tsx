@@ -21,8 +21,8 @@ export function PagesDropDown() {
       <NavigationMenu>
         <NavigationMenuList>
 
-        <NavigationMenuItem>
-            <Link href="/integrations" legacyBehavior passHref>
+          <NavigationMenuItem>
+            <Link href="/features" legacyBehavior passHref>
               <NavigationMenuLink className="group inline-flex h-10 w-max dark:bg-transparent dark:hover:bg-secondary items-center justify-center rounded-md bg-transparent px-4 py-2 text-lg font-semibold transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                 Features
               </NavigationMenuLink>
