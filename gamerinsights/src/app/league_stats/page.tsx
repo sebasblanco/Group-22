@@ -5,7 +5,7 @@ export default function Features() {
     <div>
       <LeagueOfLegendsStats
         username={"Doublelift"}
-        tag={"#na1"}
+        tag={"na1"}
       ></LeagueOfLegendsStats>
     </div>
   );
