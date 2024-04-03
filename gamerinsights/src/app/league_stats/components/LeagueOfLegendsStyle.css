@@ -1,0 +1,323 @@
+.LoL-stats-div {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding-top: 25px;
+  background-image: linear-gradient(#4ac9e3, #006eb3);
+}
+
+div {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  line-height: 10px;
+  font-size: 24px;
+}
+
+.remove-all-styles {
+  all: revert;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.champion-list-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.champion-item {
+  margin-bottom: 10px;
+}
+
+.champion-list {
+  list-style-type: none;
+}
+
+.champion-entry {
+  border: 1px solid #255;
+  border-radius: 5px;
+  background-image: linear-gradient(#f8eddb, #e3e1d9);
+  margin-bottom: 10px;
+  padding: 10px;
+  display: "flex";
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.champion-info {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.champion-name {
+  font-weight: bold;
+  color: darkblue;
+}
+
+.mastery-points {
+  color: red;
+}
+.champion-image {
+  width: 85px;
+  height: auto;
+  padding-right: 10px;
+  margin-left: 10px;
+}
+
+.tab {
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 26px;
+  color: white;
+}
+
+.tab.active {
+  font-weight: bold;
+}
+
+.match-box {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  width: 60%;
+}
+
+.winner-box {
+  border: 5px solid green;
+  background-color: #c6edc3;
+}
+
+.loser-box {
+  border: 5px solid red;
+  background-color: #ff9a98;
+}
+
+.match-participants {
+  text-align: right;
+  list-style: none;
+  font-size: 14px;
+}
+
+.participant-champ-img {
+  width: 30px;
+  margin-left: 5px;
+  border-radius: 10px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+.dropdown-champ-img {
+  width: 30px;
+  border-radius: 10px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.red-side {
+  margin-top: 0px;
+  margin-right: 0;
+  margin-left: auto;
+  width: auto;
+}
+
+.blue-side {
+  margin-bottom: 0px;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.all-participants-list {
+  margin-right: 0;
+  margin-left: auto;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.kda {
+  margin-left: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.summoner-spell-img {
+  margin-top: 5px;
+  width: 45px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.two-summoner-icons {
+  margin-left: 5px;
+  margin-right: auto;
+}
+.item-list-container {
+  margin: auto;
+  padding: 10px;
+}
+
+.item-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.item-list li {
+  display: inline-block;
+}
+
+.rune-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+.rune-list li {
+  display: inline-block;
+  background-color: grey;
+  border-radius: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.rune-icon {
+  width: 80px;
+}
+
+.item-icon {
+  width: 50px;
+  height: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.game-duration {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.game-date {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.rank-icon {
+  height: 200px;
+}
+
+.rank-text {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.winrate-text {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.dropdown-button {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 5px;
+}
+
+.dropdown-box {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: -5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 60%;
+  border: 5px solid black;
+  border-top: none;
+  background-image: linear-gradient(#f8eddb, #e3e1d9);
+  margin-left: -20px;
+}
+
+.dropdown-box-row {
+  display: grid;
+  grid-template-columns: 5% 15% 10% 10% 10% 30% 20%;
+  margin-left: -32px;
+}
+
+.column {
+  border: 1px solid #ccc;
+}
+
+.winning-team-text {
+  font-size: 40px;
+  color: darkgreen;
+  font-weight: bold;
+}
+
+.losing-team-text {
+  font-size: 40px;
+  color: darkred;
+  font-weight: bold;
+}
+
+.dropdown-container {
+  margin-bottom: 20px;
+}
+
+.dropdown-image {
+}
+
+.dropdown-player-name {
+}
+
+.dropdown-KDA {
+}
+
+.dropdown-rune-icon {
+  width: 50%;
+}
+.null-item {
+  background-color: grey;
+}
+
+.dropdown-summoner-spells {
+}
+
+.dropdown-item-build {
+}
+
+.dropdown-damage {
+}
+
+.damage-progress-bar {
+  width: 100%;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.progress {
+  height: 100%;
+  background-color: rgb(2, 255, 2);
+  border-radius: 5px;
+}
+
+.damage-label {
+  position: relative;
+  top: -4px;
+  text-align: center;
+  font-weight: bold;
+}
