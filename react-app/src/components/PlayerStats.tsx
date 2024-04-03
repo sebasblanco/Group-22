@@ -152,6 +152,8 @@ function HtmlForm() {
         <button type="submit" className="btn btn-primary">
           Go
         </button>
+
+        {gameStats}
       </div>
     </>
   );
