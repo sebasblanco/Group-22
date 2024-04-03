@@ -60,6 +60,7 @@
     "date-fns": "^3.3.0",
     "encoding": "^0.1.13",
     "framer-motion": "^11.0.24",
+    "install": "^0.13.0",
     "iron-session": "^6.3.1",
     "jotai": "^2.6.2",
     "lottie-web": "^5.12.2",
