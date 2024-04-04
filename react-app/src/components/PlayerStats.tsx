@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LeagueOfLegendsStats from "./league-components/LeagueOfLegendsStats";
 import OWLStats from "./OWL-components/OWLStats";
 import WoWStats from "./WoW-components/WoWStats";
+
 
 function HtmlForm() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [username, setUsername] = useState<string>("");
   const [gameStats, setGameStats] = useState<JSX.Element | null>(null);
   const [realm, setRealm] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleItemClick = (item: string) => {
       setSelectedItem(item);
@@ -47,6 +50,10 @@ function HtmlForm() {
       }
     }
   };
+
+  const handleGo = () =>{
+    navigate("/gamestats");
+  }
 
     return (
     <>
@@ -149,8 +156,8 @@ function HtmlForm() {
         <hr />
         
         <h4>General Game Stats</h4>
-        <button type="submit" className="btn btn-primary">
-          Go
+        <button type="button" className="btn btn-primary" onClick={handleGo}>
+          Go to full game stats
         </button>
 
         {gameStats}
