@@ -98,7 +98,7 @@ export default function Header() {
                             Sign Up
                         </Link> */}
                         <Button asChild className='text-md dark:text-black font-semibold dark:bg-white dark:hover:bg-gray-300'>
-                            <Link href="/auth/login/">Log in</Link>
+                            <Link href="/league_stats">Log in</Link>
                         </Button>
 
                         {/* <LoginOptions /> */}

@@ -3,9 +3,32 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 
-const LoLMasteryStats = ({ username, tag, puuid }) => {
-  const [championMastery, setChampionMastery] = useState([]);
-  const [championData, setChampionData] = useState(null);
+interface LoLMasteryStatsProps {
+  username: string;
+  tag: string;
+  puuid: string | number; // Adjust the type as necessary
+}
+
+interface ChampionData {
+  data: {
+    [key: string]: {
+      key: string;
+      name: string;
+      // Add other properties as needed
+    };
+  };
+  // Add other properties as needed
+}
+
+interface ChampionMastery {
+  championId: string; // Assuming championId is a string, adjust the type as necessary
+  championLevel: number;
+  championPoints: number;
+}
+
+const LoLMasteryStats = ({ username, tag, puuid }: LoLMasteryStatsProps) => {
+  const [championMastery, setChampionMastery] = useState<ChampionMastery[]>([]);
+  const [championData, setChampionData] = useState<ChampionData | null>(null);
   console.log("Puuid: " + puuid);
 
   // Fetch the champion masterys
@@ -44,7 +67,7 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
   }, []);
 
   // Function to get champion name from ID
-  const getChampionNameFromId = (championId) => {
+  const getChampionNameFromId = (championId: { toString: () => any; }) => {
     if (championData && championData.data) {
       // Iterate over championData keys to find the matching "key" value
       for (const championKey of Object.keys(championData.data)) {
@@ -57,7 +80,7 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
   };
 
   //For the pictures, the first letter of the champ name needs to be capitalized, spaces removed, punctuation removed
-  function FormatChampName(string) {
+  function FormatChampName(string: string) {
     string = string.replace(/\s/g, "");
     string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
 
@@ -87,7 +110,7 @@ const LoLMasteryStats = ({ username, tag, puuid }) => {
   }
 
   return (
-    <div className="LoL-stats-div">
+    <div>
       <p>Champion Masteries for {username}</p>
 
       <div className="champion-list-container">

@@ -4,6 +4,7 @@ import axios from "axios";
 import "./components/LeagueOfLegendsStyle.css";
 import LoLMasteryStats from "./components/LoLMasteryStats";
 import LoLMatchHistory from "./components/LoLMatchHistory";
+import Nav from "./components/Nav";
 
 const LeagueOfLegendsStats = ({ username, tag }) => {
   const [activeTab, setActiveTab] = useState("matchHistory"); // State to track active tab
@@ -30,37 +31,9 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     fetchData();
   }, [username, tag]);
 
-  // NavBar component
-  const NavBar = () => {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "#282e32",
-          listStyle: "none",
-          padding: 0,
-        }}
-      >
-        <li
-          className={`tab ${activeTab === "matchHistory" ? "active" : ""}`}
-          onClick={() => handleTabChange("matchHistory")}
-        >
-          Match History
-        </li>
-        <li
-          className={`tab ${activeTab === "championMastery" ? "active" : ""}`}
-          onClick={() => handleTabChange("championMastery")}
-        >
-          Champion Mastery
-        </li>
-      </div>
-    );
-  };
 
   return (
-    <div>
-      <NavBar />
+    <div className="bg-zinc-900 dark:bg-zinc-900">
       {activeTab === "championMastery" && (
         <div>
           <LoLMasteryStats username={username} tag={tag} puuid={puuid} />{" "}
