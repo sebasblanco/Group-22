@@ -101,6 +101,15 @@ function HtmlForm() {
                    World of Warcraft
                 </a>
               </li>
+              <li>
+                <a
+                   className="dropdown-item"
+                   href="#"
+                   onClick={() => handleItemClick("Team Fortress 2")}
+                >
+                   Team Fortress 2
+                </a>
+              </li>
             </ul>
           </div>
           {/* End of dropdown menu */}
