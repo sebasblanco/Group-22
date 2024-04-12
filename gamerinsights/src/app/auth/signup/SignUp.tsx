@@ -78,7 +78,7 @@ export default function SignUp() {
         toast.success('Sign up successful!');
         // Add pause to allow toast to display
         await new Promise(resolve => setTimeout(resolve, 2000));
-        router.push('/');
+        router.push('/auth/login');
       }
     } catch (error) {
       console.error('There was an error!', error);

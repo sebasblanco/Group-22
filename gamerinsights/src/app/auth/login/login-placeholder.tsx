@@ -6,7 +6,7 @@ import LogIn from "./login";
 // import { ModeToggle } from "./dashboard/components/DarkModeToggle";
 // import { BackgroundBeams } from "@/components/ui/background-beams";
 import { getServerSession } from "next-auth";
-import authOptions from "@/app/api/auth/[...nextauth]/authOptions";
+import authOptions from "@/lib/authOptions";
 import { redirect } from "next/navigation";
 
 export default async function AuthenticationPage() {

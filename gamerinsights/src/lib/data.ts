@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client/edge'
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
+import { authOptions } from '@/lib/authOptions';
+import { prisma } from '@/lib/PrismaClient';
 
-export const prisma = new PrismaClient()
 
 export async function getUserData() {
     const session = await getServerSession(authOptions)

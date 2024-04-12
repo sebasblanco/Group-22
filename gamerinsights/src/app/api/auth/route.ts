@@ -1,12 +1,9 @@
-import { PrismaClient } from '@prisma/client/edge'
 import bcrypt from 'bcrypt';
 import { NextResponse } from 'next/server';
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { authOptions } from "@/lib/authOptions";
+import { prisma } from '@/lib/PrismaClient';
 
-
-
-const prisma = new PrismaClient()
 
 
 export async function POST(request: Request) {
