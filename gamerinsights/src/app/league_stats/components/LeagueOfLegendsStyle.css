@@ -107,15 +107,24 @@ p {
 .match-participants {
   text-align: right;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 14px;
 }
 
+.match-participants li {
+  display: flex;
+  align-items: center;
+}
+
 .participant-champ-img {
-  width: 25%;
-  margin-left: 5px;
-  border-radius: 10px;
-  margin-bottom: 1px;
-  margin-top: 1px;
+  width: 40px;
+  height: auto;
+  margin: 5px;
+  margin-right: 5px;
+  margin-left: auto;
+  border-radius: 5px;
 }
 
 .dropdown-champ-img {
@@ -130,15 +139,16 @@ p {
 
 .red-side {
   margin-top: 0px;
-  margin-right: 0;
+  margin-right: 0px;
   margin-left: auto;
-  width: auto;
+  width: 50%;
 }
 
 .blue-side {
   margin-bottom: 0px;
   margin-right: auto;
   margin-left: 0;
+  width: 50%;
 }
 
 .all-participants-list {
@@ -260,7 +270,7 @@ p {
 
 .dropdown-box-row {
   display: grid;
-  grid-template-columns: 5% 15% 10% 10% 10% 30% 20%;
+  grid-template-columns: 5% 15% 10% 10% 10% 35% 15%;
   margin-left: -32px;
 }
 
