@@ -38,17 +38,17 @@ export async function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-2">
-            <p className="text-sm font-semibold leading-none">
+            <p className="text-sm text-left font-semibold leading-none">
               {`${data?.firstName} ${data?.lastName}`}
             </p>
-            <p className="text-xs leading-none text-muted-foreground">
+            <p className="text-xs text-left leading-none text-muted-foreground">
               {`${data?.email}`}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href={'/dashboard/settings'} >
+          <Link href={'/dashboard/settings/profile'} >
             <DropdownMenuItem>
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
