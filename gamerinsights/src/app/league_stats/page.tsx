@@ -22,8 +22,11 @@ export default function Features() {
           placeholder="Enter username#tag"
           value={usernameAndTag}
           onChange={handleInputChange}
+          style={{ color: "white" }}
         />
-        <button type="submit">Search</button>
+        <button style={{ color: "white" }} type="submit">
+          Search
+        </button>
       </form>
 
       {usernameAndTag && (
