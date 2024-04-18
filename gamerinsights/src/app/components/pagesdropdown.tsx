@@ -54,11 +54,6 @@ export function PagesDropDown() {
                     <p className="text-md font-medium leading-none">Our Story</p>
                   </NavigationMenuLink>
                 </Link>
-                <Link href="/about#careers" legacyBehavior passHref>
-                  <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                    <p className="text-md font-medium leading-none">Careers</p>
-                  </NavigationMenuLink>
-                </Link>
                 <Link href="/about#contact" legacyBehavior passHref>
                   <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                     <p className="text-md font-medium leading-none">Contact</p>

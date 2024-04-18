@@ -3,5 +3,8 @@
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.24",
     "tailwind-merge": "^2.2.2"
+  },
+  "devDependencies": {
+    "prisma": "^5.12.1"
   }
 }

@@ -1,7 +1,16 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const LoLWinrateCircle = ({ rankData }) => {
+interface RankData {
+  wins: number;
+  losses: number;
+ }
+ 
+ interface LoLWinrateCircleProps {
+  rankData: RankData[];
+ }
+
+ const LoLWinrateCircle: React.FC<LoLWinrateCircleProps> = ({ rankData }) => {
   var percentage =
     rankData.length !== 0
       ? (rankData[0].wins / (rankData[0].wins + rankData[0].losses)) * 100
@@ -11,7 +20,7 @@ const LoLWinrateCircle = ({ rankData }) => {
 
   return (
     <div>
-      <span class="winrate-text">Ranked winrate</span>
+      <span className="text-white">Ranked winrate</span>
       <CircularProgressbar value={percentage} text={`${percentage}%`} />
     </div>
   );

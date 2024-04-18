@@ -3,8 +3,51 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 
-const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
-  function FormatChampName(string) {
+interface MatchData {
+  // Define the structure of matchData here
+  // For example:
+  info: {
+    participants: Array<{
+      perks: any;
+      totalDamageDealtToChampions(maxDamage: number, totalDamageDealtToChampions: any): number;
+      riotIdGameName: any;
+      riotIdTagline: any;
+      kills: ReactNode;
+      deaths: ReactNode;
+      assists: ReactNode;
+      summoner1Id: any;
+      summoner2Id: any;
+      win: any;
+      championName: string;
+      // Add other properties as needed
+    }>;
+    teams: Array<{
+      win: boolean;
+    }>;
+  };
+}
+
+interface RuneData {
+  // Define the structure of runeData here
+  // For example:
+  find: (arg: any) => {
+    slots: any;
+    id: number;
+    key: string;
+    // Add other properties as needed
+  };
+}
+
+interface LoLDropDownMenuProps {
+  matchData: MatchData;
+  mainPlayerIndex: number;
+  runeData: RuneData;
+}
+
+
+
+const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayerIndex, runeData }) => {
+  function FormatChampName(string: string) {
     string = string.replace(/\s/g, "");
     string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
 
@@ -33,15 +76,15 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  function getStyle(index, firstOrSecond) {
+  function getStyle(index: number, firstOrSecond: number) {
     if (matchData !== null && runeData !== null)
       var styleID =
         matchData.info.participants[index].perks.styles[firstOrSecond].style;
-    var styleName = runeData.find((styleName) => styleName.id === styleID);
+    var styleName = runeData.find((styleName: { id: any; }) => styleName.id === styleID);
     return styleName.key;
   }
 
-  function getKeyStone(index) {
+  function getKeyStone(index: number) {
     if (!matchData || !runeData) return null;
 
     const participant = matchData.info.participants[index];
@@ -49,7 +92,7 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
       return null;
 
     const styleID = participant.perks.styles[0]?.style;
-    const style = runeData.find((style) => style.id === styleID);
+    const style = runeData.find((style: { id: any; }) => style.id === styleID);
     if (!style) return null;
 
     const keyStoneID = participant.perks.styles[0]?.selections[0]?.perk;
@@ -57,7 +100,7 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
       return "FirstStrike";
     }
     const keyStone = style.slots[0].runes.find(
-      (rune) => rune.id === keyStoneID
+      (rune: { id: any; }) => rune.id === keyStoneID
     );
     if (!keyStone) return null;
 
@@ -69,6 +112,7 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
     }
     return keyStoneName;
   }
+
 
   const DamageBar = ({ the_participant, winLose }) => {
     // Calculate the percentage of damage dealt by the player relative to the lobby's high damage
@@ -106,7 +150,7 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
     losingTeamParticipants = firstFiveParticipants;
   }
 
-  const makeRow = (playerIndex) => {
+  const makeRow = (playerIndex: number) => {
     const participant = matchData.info.participants[playerIndex];
     return (
       <div className="dropdown-box-row">
@@ -141,11 +185,10 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
               src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/perk-images/Styles/${getStyle(
                 playerIndex,
                 0
-              )}/${getKeyStone(playerIndex)}/${
-                getKeyStone(playerIndex) === "LethalTempo"
+              )}/${getKeyStone(playerIndex)}/${getKeyStone(playerIndex) === "LethalTempo"
                   ? "LethalTempoTemp"
                   : getKeyStone(playerIndex)
-              }.png`}
+                }.png`}
               alt={`Keystone`}
               className="dropdown-rune-icon"
             />
@@ -179,9 +222,8 @@ const LoLDropDownMenu = ({ matchData, mainPlayerIndex, runeData }) => {
               participant[`item${index}`] !== 0 ? (
                 <li key={index}>
                   <img
-                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
-                      participant[`item${index}`]
-                    }.png.webp`}
+                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${participant[`item${index}`]
+                      }.png.webp`}
                     alt={`Item ${index}`}
                     className="item-icon"
                   />

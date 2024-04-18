@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import LeagueOfLegendsStats from "./LeagueOfLegendsStats";
-
+import Nav from "./components/Nav";
 export default function Features() {
   const [usernameAndTag, setUsernameAndTag] = useState("DoubleLift#NA1");
 
