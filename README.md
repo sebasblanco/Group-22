@@ -2,14 +2,16 @@
 
 React-app
 
-***For first time set up run the following***
+**For first time set up run the following**
 ```
 npm install --save react-circular-progressbar
 npm install next-auth
 ```
 
-***Running the application***
+**Running the application**
+
 Open folder _gamerinsights_ 
+
 Run `npm run dev`
 
 Sources:
