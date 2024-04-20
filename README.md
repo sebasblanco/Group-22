@@ -2,10 +2,16 @@
 
 React-app
 
-For first time set up, run 'npm install --save react-circular-progressbar'
+***For first time set up run the following***
+```
+npm install --save react-circular-progressbar
+npm install next-auth
+```
 
-Open folder, run 'npm run dev'
+***Running the application***
+Open folder _gamerinsights_ 
+Run `npm run dev`
 
 Sources:
-Contains helpful data about League of Legends item descriptions. Used in the tooltips
-in match history - https://github.com/meraki-analytics/lolstaticdata?tab=readme-ov-file
+[Contains helpful data about League of Legends item descriptions](https://github.com/meraki-analytics/lolstaticdata?tab=readme-ov-file). Used in the tooltips
+in match history.
