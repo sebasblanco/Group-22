@@ -32,7 +32,8 @@ const formSchema = z
       .refine(value => /[^a-zA-Z0-9]/.test(value), {
         message: "Password must contain at least one special character",
       }),
-    passwordConfirm: z.string(),
+      passwordConfirm: z.string(),
+      riotUserName: z.string()
   })
   .refine(
     (data) => {
@@ -180,7 +181,26 @@ export default function SignUp() {
                 </FormItem>
               );
             }}
-          />
+                  />
+            <FormField
+                control={form.control}
+                name="riotUserName"
+                render={({ field }) => {
+                    return (
+                        <FormItem>
+                            <FormLabel>Riot Username</FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="Username#Tag"
+                                    type="text"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    );
+                }}
+            />
           <Button type="submit" className="w-full text-white">
             Submit
           </Button>

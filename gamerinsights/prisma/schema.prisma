@@ -20,5 +20,5 @@ model User {
   lastName            String
   email               String           @unique
   password            String
-  riotUserName	      String?          	
+  riotUserName	      String          	
 }

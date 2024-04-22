@@ -8,7 +8,7 @@ import { prisma } from '@/lib/PrismaClient';
 
 export async function POST(request: Request) {
     const body = await request.json();
-    const { firstName, lastName, emailAddress, password } = body;
+    const { firstName, lastName, emailAddress, password, riotUserName } = body;
 
     // Validate the input (e.g., check if email is already in use)
     const existingUser = await prisma.user.findUnique({
@@ -29,6 +29,7 @@ export async function POST(request: Request) {
             lastName,
             email: emailAddress,
             password: hashedPassword,
+            riotUserName
         },
     });
 
