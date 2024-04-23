@@ -49,3 +49,26 @@ export async function GET(request: Request) {
     return NextResponse.json(data);
 
 }
+
+export async function PUT(request: Request) {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+        return new NextResponse(JSON.stringify({ error: 'No session found' }), { status: 400 });
+    }
+
+    const body = await request.json();
+    const { firstName, lastName, emailAddress, password } = body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.update({
+        where: { email: emailAddress },
+        data: {
+            firstName,
+            lastName,
+            password: hashedPassword,
+        },
+    });
+
+    return new NextResponse(JSON.stringify({ message: 'User updated successfully', user }), { status: 200 });
+}
