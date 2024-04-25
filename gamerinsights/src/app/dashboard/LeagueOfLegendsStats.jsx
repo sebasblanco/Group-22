@@ -31,8 +31,36 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     fetchData();
   }, [username, tag]);
 
+  const NavBar = () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#282e32",
+          listStyle: "none",
+          padding: 0,
+        }}
+      >
+        <li
+          className={`tab ${activeTab === "matchHistory" ? "active" : ""}`}
+          onClick={() => handleTabChange("matchHistory")}
+        >
+          Match History
+        </li>
+        <li
+          className={`tab ${activeTab === "championMastery" ? "active" : ""}`}
+          onClick={() => handleTabChange("championMastery")}
+        >
+          Champion Mastery
+        </li>
+      </div>
+    );
+  };
+
   return (
-    <div>
+    <div className="bg-zinc-900 dark:bg-zinc-900">
+      <NavBar />
       {activeTab === "championMastery" && (
         <div>
           <LoLMasteryStats username={username} tag={tag} puuid={puuid} />{" "}

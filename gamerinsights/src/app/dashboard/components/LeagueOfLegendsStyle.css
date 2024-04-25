@@ -6,12 +6,16 @@
 
 div {
   text-align: center;
+  color: black;
 }
 
 p {
   text-align: center;
   line-height: 10px;
   font-size: 24px;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .remove-all-styles {
@@ -106,15 +110,24 @@ p {
 .match-participants {
   text-align: right;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 14px;
 }
 
+.match-participants li {
+  display: flex;
+  align-items: center;
+}
+
 .participant-champ-img {
-  width: 30px;
-  margin-left: 5px;
-  border-radius: 10px;
-  margin-bottom: 1px;
-  margin-top: 1px;
+  width: 40px;
+  height: auto;
+  margin: 5px;
+  margin-right: 5px;
+  margin-left: auto;
+  border-radius: 5px;
 }
 
 .dropdown-champ-img {
@@ -129,15 +142,16 @@ p {
 
 .red-side {
   margin-top: 0px;
-  margin-right: 0;
+  margin-right: 0px;
   margin-left: auto;
-  width: auto;
+  width: 50%;
 }
 
 .blue-side {
   margin-bottom: 0px;
   margin-right: auto;
   margin-left: 0;
+  width: 50%;
 }
 
 .all-participants-list {
@@ -156,7 +170,7 @@ p {
 
 .summoner-spell-img {
   margin-top: 5px;
-  width: 45px;
+  width: 80%;
   margin-left: 5px;
   margin-right: 5px;
   border-radius: 5px;
@@ -165,6 +179,9 @@ p {
 .two-summoner-icons {
   margin-left: 5px;
   margin-right: auto;
+  display: flex;
+  margin-top: 10px;
+  width: 45%;
 }
 .item-list-container {
   margin: auto;
@@ -222,11 +239,13 @@ p {
 .rank-text {
   font-weight: bold;
   font-size: 32px;
+  color: white;
 }
 
 .winrate-text {
   font-weight: bold;
   font-size: 24px;
+  color: white;
 }
 
 .dropdown-button {
@@ -235,6 +254,7 @@ p {
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 5px;
+  background-color: white;
 }
 
 .dropdown-box {
@@ -242,6 +262,7 @@ p {
   margin-bottom: 20px;
   margin-top: -5px;
   padding: 10px;
+  padding-left: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 60%;
   border: 5px solid black;
@@ -252,7 +273,7 @@ p {
 
 .dropdown-box-row {
   display: grid;
-  grid-template-columns: 5% 15% 10% 10% 10% 30% 20%;
+  grid-template-columns: 5% 15% 10% 10% 10% 35% 15%;
   margin-left: -32px;
 }
 
@@ -292,7 +313,9 @@ p {
   background-color: grey;
 }
 
-.dropdown-summoner-spells {
+.dropdown-summoner-icons {
+  width: 50%;
+  display: flex;
 }
 
 .dropdown-item-build {

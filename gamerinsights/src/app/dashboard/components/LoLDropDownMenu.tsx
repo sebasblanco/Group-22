@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./LeagueOfLegendsStyle.css";
 
@@ -9,7 +9,10 @@ interface MatchData {
   info: {
     participants: Array<{
       perks: any;
-      totalDamageDealtToChampions(maxDamage: number, totalDamageDealtToChampions: any): number;
+      totalDamageDealtToChampions(
+        maxDamage: number,
+        totalDamageDealtToChampions: any
+      ): number;
       riotIdGameName: any;
       riotIdTagline: any;
       kills: ReactNode;
@@ -44,9 +47,11 @@ interface LoLDropDownMenuProps {
   runeData: RuneData;
 }
 
-
-
-const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayerIndex, runeData }) => {
+const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({
+  matchData,
+  mainPlayerIndex,
+  runeData,
+}) => {
   function FormatChampName(string: string) {
     string = string.replace(/\s/g, "");
     string = string.replace(/[.,'\/#!$%^&*;:{}=\-_`~()]/g, "");
@@ -80,7 +85,9 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
     if (matchData !== null && runeData !== null)
       var styleID =
         matchData.info.participants[index].perks.styles[firstOrSecond].style;
-    var styleName = runeData.find((styleName: { id: any; }) => styleName.id === styleID);
+    var styleName = runeData.find(
+      (styleName: { id: any }) => styleName.id === styleID
+    );
     return styleName.key;
   }
 
@@ -92,7 +99,7 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
       return null;
 
     const styleID = participant.perks.styles[0]?.style;
-    const style = runeData.find((style: { id: any; }) => style.id === styleID);
+    const style = runeData.find((style: { id: any }) => style.id === styleID);
     if (!style) return null;
 
     const keyStoneID = participant.perks.styles[0]?.selections[0]?.perk;
@@ -100,7 +107,7 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
       return "FirstStrike";
     }
     const keyStone = style.slots[0].runes.find(
-      (rune: { id: any; }) => rune.id === keyStoneID
+      (rune: { id: any }) => rune.id === keyStoneID
     );
     if (!keyStone) return null;
 
@@ -112,7 +119,6 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
     }
     return keyStoneName;
   }
-
 
   const DamageBar = ({ the_participant, winLose }) => {
     // Calculate the percentage of damage dealt by the player relative to the lobby's high damage
@@ -185,10 +191,11 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
               src={`https://static.bigbrain.gg/assets/lol/riot_static/14.3.1/img/perk-images/Styles/${getStyle(
                 playerIndex,
                 0
-              )}/${getKeyStone(playerIndex)}/${getKeyStone(playerIndex) === "LethalTempo"
+              )}/${getKeyStone(playerIndex)}/${
+                getKeyStone(playerIndex) === "LethalTempo"
                   ? "LethalTempoTemp"
                   : getKeyStone(playerIndex)
-                }.png`}
+              }.png`}
               alt={`Keystone`}
               className="dropdown-rune-icon"
             />
@@ -222,8 +229,9 @@ const LoLDropDownMenu: React.FC<LoLDropDownMenuProps> = ({ matchData, mainPlayer
               participant[`item${index}`] !== 0 ? (
                 <li key={index}>
                   <img
-                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${participant[`item${index}`]
-                      }.png.webp`}
+                    src={`https://cdn.darkintaqt.com/lol/c-assets/items/${
+                      participant[`item${index}`]
+                    }.png.webp`}
                     alt={`Item ${index}`}
                     className="item-icon"
                   />
