@@ -67,7 +67,7 @@ const LoLMasteryStats = ({ username, tag, puuid }: LoLMasteryStatsProps) => {
   }, []);
 
   // Function to get champion name from ID
-  const getChampionNameFromId = (championId: { toString: () => any }) => {
+  const getChampionNameFromId = (championId: { toString: () => any; }) => {
     if (championData && championData.data) {
       // Iterate over championData keys to find the matching "key" value
       for (const championKey of Object.keys(championData.data)) {

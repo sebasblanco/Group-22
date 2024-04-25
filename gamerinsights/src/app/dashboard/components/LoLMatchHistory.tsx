@@ -14,13 +14,9 @@ interface LoLMatchHistoryProps {
 interface SummonerData {
   id: string; // Assuming the id is a string, adjust the type as necessary
   // Add other properties as needed
-}
+ }
 
-const LoLMatchHistory: React.FC<LoLMatchHistoryProps> = ({
-  username,
-  tag,
-  puuid,
-}) => {
+const LoLMatchHistory: React.FC<LoLMatchHistoryProps> = ({ username, tag, puuid }) => {
   const [matchIds, setMatchIds] = useState([]);
   const [summonerData, setSummonerData] = useState<SummonerData | null>(null);
   const [rankData, setRankData] = useState(null);
@@ -59,20 +55,19 @@ const LoLMatchHistory: React.FC<LoLMatchHistoryProps> = ({
   //Find the summoner's rank from id
   useEffect(() => {
     const fetchData = async () => {
-      if (summonerData) {
-        // Check if summonerData is not null
-        try {
-          const response = await axios.get(
-            `https://gamer-insights.azurewebsites.net/api/getrankedbysummonerid?code=v3qS6VLz2yS0HAa0IYdwAFrW3Wu5FAgV8mCxjELLSfIHAzFufOcBdQ%3D%3D&summonerId=${summonerData.id}`
-          );
-          setRankData(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
+       if (summonerData) { // Check if summonerData is not null
+         try {
+           const response = await axios.get(
+             `https://gamer-insights.azurewebsites.net/api/getrankedbysummonerid?code=v3qS6VLz2yS0HAa0IYdwAFrW3Wu5FAgV8mCxjELLSfIHAzFufOcBdQ%3D%3D&summonerId=${summonerData.id}`
+           );
+           setRankData(response.data);
+         } catch (error) {
+           console.error(error);
+         }
+       }
     };
     fetchData();
-  }, [summonerData]);
+   }, [summonerData]);
   console.log("Below is ranked data");
   console.log(rankData);
 
@@ -126,7 +121,7 @@ const LoLMatchHistory: React.FC<LoLMatchHistoryProps> = ({
             alt="Item 2"
             className="rank-icon"
           />
-          <span style={{ marginBottom: 15, marginTop: -25, color: "white" }}>
+          <span style={{ marginBottom: 15, marginTop: -25 }}>
             <span className="rank-text">
               {rankData[0].tier} {rankData[0].rank}
             </span>{" "}
