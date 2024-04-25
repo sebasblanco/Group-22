@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./components/LeagueOfLegendsStyle.css";
-import LoLMasteryStats from "./components/LoLMasteryStats";
-import LoLMatchHistory from "./components/LoLMatchHistory";
-import Nav from "./components/Nav";
+import "./LeagueOfLegendsStyle.css";
+import LoLMasteryStats from "./LoLMasteryStats";
+import LoLMatchHistory from "./LoLMatchHistory";
+import Nav from "./Nav";
 
 const LeagueOfLegendsStats = ({ username, tag }) => {
   const [activeTab, setActiveTab] = useState("matchHistory"); // State to track active tab

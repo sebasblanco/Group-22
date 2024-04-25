@@ -67,7 +67,7 @@ export function NavBar({ children }: { children: React.ReactNode }) {
                     className="h-[50px] w-auto mt-5"
                   />
                 </Link>
-                <Link href="/league_stats">
+                <Link href="/dashboard/search">
                   <img
                     src="league_icon_white.png"
                     alt="test"

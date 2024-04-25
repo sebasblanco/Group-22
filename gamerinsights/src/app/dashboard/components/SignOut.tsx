@@ -5,7 +5,7 @@ import { signOut } from "next-auth/react"
 
 export default function SignOutButton() {
     return (
-        <DropdownMenuItem onClick={() => signOut()}>
+        <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>
             Log out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
