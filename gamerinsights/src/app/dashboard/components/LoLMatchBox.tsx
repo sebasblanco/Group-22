@@ -282,7 +282,7 @@ const LoLMatchBox = ({ matchId, puuid }) => {
             </ul>
           </div>
           {/* List the participants */}
-          <div className="all-participants-list" style={{ width: "27%" }}>
+          <div className="all-participants-list">
             <ul
               className="match-participants blue-side"
               style={{ width: "50%" }}
@@ -306,7 +306,10 @@ const LoLMatchBox = ({ matchId, puuid }) => {
                 </li>
               ))}
             </ul>
-            <ul className="match-participants red-side">
+            <ul
+              className="match-participants red-side"
+              style={{ width: "50%" }}
+            >
               {lastFiveParticipants.map((participant, index) => (
                 <li
                   key={index}
