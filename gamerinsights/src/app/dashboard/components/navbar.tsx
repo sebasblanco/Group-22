@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 // import ClientSwitcher from "./clientnav";
 import { signOut } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
 
 
 function classNames(...classes: string[]) {
@@ -31,6 +32,8 @@ function classNames(...classes: string[]) {
 export function NavBar({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const router = useRouter();
+
+
 
     React.useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -53,9 +56,12 @@ export function NavBar({ children }: { children: React.ReactNode }) {
                     <div className="mx-auto px-4 ">
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="flex items-center">
-                                <div className="flex-shrink-0">
+                                <Link className="flex-shrink-0" href="/">
                                     <img src="gamerinsightslogo.svg" alt='test' className='h-[50px] w-auto mt-5' />
-                                </div>
+                                </Link>
+                                <Link href="/league_stats">
+                                    <img src="league_png.png" alt='test' className='h-[50px] w-auto mt-5' />
+                                </Link>
                                 <div className="hidden lg:ml-6 lg:block">
                                     <div className="flex space-x-4">
 
@@ -159,7 +165,7 @@ export function NavBar({ children }: { children: React.ReactNode }) {
                   <span className="sr-only">View notifications</span>
                 </button> */}
                                 <div>
-                                    {/* <Notifications /> */}
+                                   
                                 </div>
 
 

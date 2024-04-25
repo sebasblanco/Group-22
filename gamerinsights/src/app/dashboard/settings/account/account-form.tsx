@@ -20,14 +20,14 @@ export default function AccountForm() {
     };
     const updateUser = async () => {
         const response = await fetch("/api/auth", {
-            method: "POST",
+            method: "PUT",
             body: JSON.stringify({ email, username })
         });
     };
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission
         // const user = await getUserData();
-        updateUser();
+        // updateUser();
     }
   return (
     <div>
