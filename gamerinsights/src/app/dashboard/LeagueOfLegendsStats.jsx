@@ -31,9 +31,8 @@ const LeagueOfLegendsStats = ({ username, tag }) => {
     fetchData();
   }, [username, tag]);
 
-
   return (
-    <div className="bg-zinc-900 dark:bg-zinc-900">
+    <div>
       {activeTab === "championMastery" && (
         <div>
           <LoLMasteryStats username={username} tag={tag} puuid={puuid} />{" "}
