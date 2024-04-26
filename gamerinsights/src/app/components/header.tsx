@@ -129,13 +129,6 @@ export default function Header() {
             >
               <Link href="/auth/login">Log in</Link>
             </Button>
-
-            {/* <LoginOptions /> */}
-            <div className="ml-3">
-              <Button variant={"outline"} size={"icon"}>
-                <GithubIcon />
-              </Button>
-            </div>
           </div>
         </div>
       </nav>
