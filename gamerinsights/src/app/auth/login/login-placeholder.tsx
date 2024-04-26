@@ -20,9 +20,6 @@ export default async function AuthenticationPage() {
             <div className="container relative h-screen flex-col items-center justify-center md:grid lg:max-w-none dark:bg-dot-white/10 bg-grid-black/[0.2] lg:grid-cols-2 lg:px-0">
                 <div className="relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r">
                     <div className="absolute inset-0 bg-zinc-900" />
-                    <Link href="/" className="flex ">
-                            <img src="gamerinsightslogo.svg" alt='test' className='h-[50px] w-auto mt-5' />
-                        </Link>
                     <div className="relative z-20 flex items-center text-lg font-medium">
                     </div>
                     <div className="relative z-20 flex items-center mt-auto">
