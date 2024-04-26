@@ -8,7 +8,6 @@ import { prisma } from "../../../../lib/PrismaClient";
 import { json } from "stream/consumers";
 
 export default function AccountForm() {
-
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
 
@@ -21,13 +20,12 @@ export default function AccountForm() {
     const updateUser = async () => {
         const response = await fetch("/api/auth", {
             method: "PUT",
-            body: JSON.stringify({ email, username })
+            body: JSON.stringify({ username })
         });
     };
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent the default form submission
-        // const user = await getUserData();
-        // updateUser();
+        updateUser();
     }
   return (
     <div>
@@ -45,16 +43,6 @@ export default function AccountForm() {
                    onChange={handleUsernameChange}
                   />
                   <br />
-                  <h4>Enter your email</h4>
-                  <br />
-                  <input
-                      type="text"
-                      className="htmlForm-control"
-                      id="email"
-                      onChange={handleEmailChange}
-                  />
-                  <br />
-                  <br></br>
                   <button type="submit" className="btn btn-primary">
                       Submit
                   </button>
