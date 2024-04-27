@@ -52,18 +52,13 @@ export async function GET(request: Request) {
 
 }
 
-export async function PUT(request: Request) {
+ // Make a put function th at updates the user's riotUserName
+ export async function PUT(request: Request) {
     const session = await getServerSession(authOptions);
     if (!session) {
        return new NextResponse(JSON.stringify({ error: 'No session found' }), { status: 400 });
     }
     const user = await getUserData();
- 
-    const body = await request.json();
-    const { firstName, lastName, emailAddress, password } = body;
- 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
  
     // Update the user in the database
     const updateUser = await prisma.user.update({
