@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator"
 import AccountForm from "./account-form"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 
+
 export default function SettingsAccountPage() {
   return (
     <div className="space-y-6">
