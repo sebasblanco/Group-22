@@ -24,9 +24,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 // import { Inbox } from "../inbox";
 import React from "react";
+import LeagueIcon from "./league_icon";
 // import ClientSwitcher from "./clientnav";
 import { signOut } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
+import GamerInsightsLogo from "./gamer_insights_logo";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -61,23 +63,14 @@ export function NavBar({ children }: { children: React.ReactNode }) {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <Link className="flex-shrink-0" href="/">
-                  <img
-                    src="gamerinsightslogo.svg"
-                    alt="test"
-                    className="h-[50px] w-auto mt-5"
-                  />
+                  <p>
+                    <GamerInsightsLogo />
+                  </p>
                 </Link>
                 <Link href="/dashboard/search">
-                  <img
-                    src="league_icon_white.png"
-                    alt="test"
-                    className="h-[50px] w-auto mt-5"
-                    style={{
-                      height: "40px",
-                      width: "auto",
-                      marginBottom: "25px",
-                    }}
-                  />
+                  <p>
+                    <LeagueIcon />
+                  </p>
                 </Link>
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">

@@ -343,3 +343,10 @@ p {
   text-align: center;
   font-weight: bold;
 }
+
+.league_icon {
+  width: 50px;
+  height: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+}
