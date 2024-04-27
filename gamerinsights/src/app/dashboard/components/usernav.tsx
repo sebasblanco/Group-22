@@ -44,13 +44,12 @@ export async function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href={"/dashboard/settings/profile"}>
+          <a href={"/dashboard/settings/profile"}>
             <DropdownMenuItem className="text-white">
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-          </Link>
-
+          </a>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <SignOutButton />
