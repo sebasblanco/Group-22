@@ -51,12 +51,6 @@ export async function UserNav() {
             </DropdownMenuItem>
           </Link>
 
-          <Link href={"/dashboard/settings/account"}>
-            <DropdownMenuItem className="text-white">
-              Settings
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <SignOutButton />
