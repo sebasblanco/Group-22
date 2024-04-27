@@ -33,6 +33,8 @@ export default async function SettingsProfilePage() {
                 <p className="font-light">{user?.email}</p>
               </div>
             </div>
+            <Label>Riot Username</Label>
+            <p className="font-light">{user?.riotUserName}</p>
           </div>
         </CardContent>
       </Card>

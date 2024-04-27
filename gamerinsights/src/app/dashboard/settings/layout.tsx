@@ -1,5 +1,4 @@
 import { Metadata } from "next"
-
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "./components/sidebar-nav"
 import FullNav from "../components/FullNav"
@@ -14,12 +13,8 @@ const sidebarNavItems = [
     title: "Profile",
     href: "/dashboard/settings/profile",
   },
-  {
-    title: "Account",
-    href: "/dashboard/settings/account",
-  },
-]
 
+]
 interface SettingsLayoutProps {
   children: React.ReactNode
 }
