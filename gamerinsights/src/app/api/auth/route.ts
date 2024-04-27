@@ -69,10 +69,7 @@ export async function PUT(request: Request) {
     const updateUser = await prisma.user.update({
        where: { email: user?.email },
        data: {
-          firstName,
-          lastName,
-          email: emailAddress,
-          password: hashedPassword,
+        riotUserName: user?.riotUserName,
        },
     });
  

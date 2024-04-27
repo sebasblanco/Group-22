@@ -19,32 +19,8 @@ import { useRouter } from "next/navigation";
 
 const formSchema = z
     .object({
-        firstName: z.string(),
-        lastName: z.string(),
-        emailAddress: z.string().email(),
-        password: z.string()
-            .min(3)
-            .refine(value => /[A-Z]/.test(value), {
-                message: "Password must contain at least one capital letter",
-            })
-            .refine(value => /[0-9]/.test(value), {
-                message: "Password must contain at least one number",
-            })
-            .refine(value => /[^a-zA-Z0-9]/.test(value), {
-                message: "Password must contain at least one special character",
-            }),
-        passwordConfirm: z.string(),
         riotUserName: z.string()
     })
-    .refine(
-        (data) => {
-            return data.password === data.passwordConfirm;
-        },
-        {
-            message: "Passwords do not match",
-            path: ["passwordConfirm"],
-        }
-    );
 
 export default function AccountForm() {
     const router = useRouter();
@@ -52,9 +28,8 @@ export default function AccountForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            emailAddress: "",
-            password: "",
-            passwordConfirm: "",
+
+            riotUserName: "",
         },
     });
 
@@ -64,10 +39,10 @@ export default function AccountForm() {
             const response = await fetch('/api/auth/', {
                 method: 'PUT',
                 headers: {
-                  'Content-Type': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(values),
-              });
+            });
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -98,41 +73,6 @@ export default function AccountForm() {
                     onSubmit={form.handleSubmit(handleSubmit)}
                     className="max-w-md w-full flex flex-col gap-4"
                 >
-
-                    <FormField
-                        control={form.control}
-                        name="password"
-                        render={({ field }) => {
-                            return (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Password" type="password" {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            );
-                        }}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="passwordConfirm"
-                        render={({ field }) => {
-                            return (
-                                <FormItem>
-                                    <FormLabel>Confirm Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            placeholder="Confirm Password"
-                                            type="password"
-                                            {...field}
-                                        />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            );
-                        }}
-                    />
                     <FormField
                         control={form.control}
                         name="riotUserName"
