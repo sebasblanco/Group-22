@@ -17,6 +17,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation";
 
 
+
 const formSchema = z
     .object({
         riotUserName: z.string()
@@ -24,6 +25,7 @@ const formSchema = z
 
 export default function AccountForm() {
     const router = useRouter();
+    router.refresh();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
