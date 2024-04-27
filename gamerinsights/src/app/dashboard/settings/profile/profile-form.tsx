@@ -32,9 +32,11 @@ export default async function SettingsProfilePage() {
                 <Label>Email</Label>
                 <p className="font-light">{user?.email}</p>
               </div>
+              <div className="flex flex-col space-y-1.5">
+                <Label>Riot Username</Label>
+                <p className="font-light">{user?.riotUserName}</p>
+              </div>
             </div>
-            <Label>Riot Username</Label>
-            <p className="font-light">{user?.riotUserName}</p>
           </div>
         </CardContent>
       </Card>
