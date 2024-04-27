@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
 import { prisma } from '@/lib/PrismaClient';
 
+import { getUserData } from '@/lib/data';
+
 
 
 export async function POST(request: Request) {
@@ -53,22 +55,26 @@ export async function GET(request: Request) {
 export async function PUT(request: Request) {
     const session = await getServerSession(authOptions);
     if (!session) {
-        return new NextResponse(JSON.stringify({ error: 'No session found' }), { status: 400 });
+       return new NextResponse(JSON.stringify({ error: 'No session found' }), { status: 400 });
     }
-
+    const user = await getUserData();
+ 
     const body = await request.json();
     const { firstName, lastName, emailAddress, password } = body;
-
+ 
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await prisma.user.update({
-        where: { email: emailAddress },
-        data: {
-            firstName,
-            lastName,
-            password: hashedPassword,
-        },
+ 
+    // Update the user in the database
+    const updateUser = await prisma.user.update({
+       where: { email: user?.email },
+       data: {
+          firstName,
+          lastName,
+          email: emailAddress,
+          password: hashedPassword,
+       },
     });
-
-    return new NextResponse(JSON.stringify({ message: 'User updated successfully', user }), { status: 200 });
-}
+ 
+    return new NextResponse(JSON.stringify({ message: 'User updated successfully', updateUser }), { status: 200 });
+ }

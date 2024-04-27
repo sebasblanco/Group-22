@@ -1,58 +1,163 @@
-"use client"
 
-import React, { useState } from "react";
-import DeleteUser from "./deleteUser"
-import { Label } from "@/components/ui/label"
-import { getUserData } from "@/lib/data"
-import { prisma } from "../../../../lib/PrismaClient";
-import { json } from "stream/consumers";
+"use client";
+import * as z from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from "next/navigation";
+
+
+const formSchema = z
+    .object({
+        firstName: z.string(),
+        lastName: z.string(),
+        emailAddress: z.string().email(),
+        password: z.string()
+            .min(3)
+            .refine(value => /[A-Z]/.test(value), {
+                message: "Password must contain at least one capital letter",
+            })
+            .refine(value => /[0-9]/.test(value), {
+                message: "Password must contain at least one number",
+            })
+            .refine(value => /[^a-zA-Z0-9]/.test(value), {
+                message: "Password must contain at least one special character",
+            }),
+        passwordConfirm: z.string(),
+        riotUserName: z.string()
+    })
+    .refine(
+        (data) => {
+            return data.password === data.passwordConfirm;
+        },
+        {
+            message: "Passwords do not match",
+            path: ["passwordConfirm"],
+        }
+    );
 
 export default function AccountForm() {
-    const [username, setUsername] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
+    const router = useRouter();
 
-    const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUsername(event.target.value);
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            emailAddress: "",
+            password: "",
+            passwordConfirm: "",
+        },
+    });
+
+
+    const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            const response = await fetch('/api/auth/', {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+              });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                toast.error('The email address is already in use.');
+
+            } else {
+                const data = await response.json();
+                console.log(data);
+                // Handle successful sign-up (e.g., redirect to a different page)
+                toast.success('Sign up successful!');
+                // Add pause to allow toast to display
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                router.push('/auth/login');
+            }
+        } catch (error) {
+            console.error('There was an error!', error);
+            toast.error('An unexpected error occurred.');
+        }
+
     };
-    const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-    };
-    const updateUser = async () => {
-        const response = await fetch("/api/auth", {
-            method: "PUT",
-            body: JSON.stringify({ username })
-        });
-    };
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault(); // Prevent the default form submission
-        updateUser();
-    }
-  return (
-    <div>
-          <Label>Usernames</Label>
-          <div className="mb-3">
-              <form onSubmit={handleSubmit}>
-                  <br></br>
-                  <h4>Enter Your League of Legends Username</h4>
-                  <br />
-                  <input
-                      type="text"
-                      defaultValue="username#tag"
-                      className="htmlForm-control"
-                      id="username"
-                   onChange={handleUsernameChange}
-                  />
-                  <br />
-                  <button type="submit" className="btn btn-primary">
-                      Submit
-                  </button>
-              </form>
-          </div>
-      <div className="pt-5">
-      </div>
-      <div className="pt-5">
-        <DeleteUser />
-      </div>
-    </div >
-  )
+
+    return (
+        <main className="flex flex-col items-center justify-between">
+            <Toaster />
+
+            <Form {...form}>
+                <form
+                    onSubmit={form.handleSubmit(handleSubmit)}
+                    className="max-w-md w-full flex flex-col gap-4"
+                >
+
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => {
+                            return (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Password" type="password" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            );
+                        }}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="passwordConfirm"
+                        render={({ field }) => {
+                            return (
+                                <FormItem>
+                                    <FormLabel>Confirm Password</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Confirm Password"
+                                            type="password"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            );
+                        }}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="riotUserName"
+                        render={({ field }) => {
+                            return (
+                                <FormItem>
+                                    <FormLabel>Riot Username</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="Username#Tag"
+                                            type="text"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            );
+                        }}
+                    />
+                    <Button type="submit" className="w-full text-white">
+                        Submit
+                    </Button>
+                </form>
+            </Form>
+        </main>
+    );
 }
+

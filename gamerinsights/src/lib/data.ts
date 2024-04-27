@@ -11,6 +11,6 @@ export async function getUserData() {
             where: { id: userid },
         }
     );
+
     return data;
 }
-

@@ -20,7 +20,6 @@ export default async function Home() {
                     <div className="relative z-20 flex items-center text-lg font-medium">
                     </div>
                     <div className="relative z-20 flex items-center mt-auto">
-                        {/* Hero text addition */}
 
                     </div>
                 </div>
@@ -37,7 +36,7 @@ export default async function Home() {
                         <p className="px-8 text-center text-sm text-muted-foreground">
                             Already have an account?{" "}
                             <Link
-                                href="/"
+                                href="/auth/login"
                                 className="underline underline-offset-4 hover:text-primary"
                             >
                                 Sign In
