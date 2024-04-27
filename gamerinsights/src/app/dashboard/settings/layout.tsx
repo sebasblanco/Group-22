@@ -30,8 +30,8 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
       <FullNav/>
       <div className=" space-y-4 p-8 pb-16 ">
         <div className="space-y-0.5">
-          <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
-          <p className="text-muted-foreground">
+          <h2 className="text-3xl font-bold tracking-tight text-white">Settings</h2>
+          <p className="text-white">
             Manage your account settings and set e-mail preferences.
           </p>
         </div>
