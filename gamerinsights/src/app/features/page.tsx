@@ -13,6 +13,7 @@ export default function Features() {
   <Header />
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
     <div className="mx-auto max-w-2xl lg:text-center">
+    <br></br>
       <p className="mt-2 text-3xl font-bold tracking-tight text-cyan-50 sm:text-4xl">Become Data Driven</p>
       <p className="mt-6 text-lg leading-8 text-cyan-50">Plan your next move</p>
     </div>
