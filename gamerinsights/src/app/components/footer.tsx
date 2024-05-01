@@ -75,61 +75,6 @@ export default function Footer() {
                     <Link href="/">
                         <img src="gamerinsightslogo.svg" alt='test' className='h-[50px] w-auto' />
                     </Link>
-                    <div className="mt-16 grid grid-cols-2 gap-8 col-span-2 xl:mt-0">
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold leading-6 text-black dark:text-white">Solutions</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.solutions.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-sm leading-6 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white  hover:underline">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm font-semibold leading-6 text-black dark:text-white">Documentation</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.support.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-sm leading-6 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:underline">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold leading-6 text-black dark:text-white">Company</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.company.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-sm leading-6 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white  hover:underline">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm font-semibold leading-6 text-black dark:text-white">Legal</h3>
-                                <ul role="list" className="mt-6 space-y-4">
-                                    {navigation.legal.map((item) => (
-                                        <li key={item.name}>
-                                            <a href={item.href} className="text-sm leading-6 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white  hover:underline">
-                                                {item.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 {/* <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
                     <div>

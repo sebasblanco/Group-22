@@ -56,7 +56,6 @@ export default function Body() {
                                 Gamer Insights is a data-driven platform that helps you make better decisions for your gaming strategy. Our platform provides you with actionable insights and analytics to help you improve your gameplay and elevate your strategy.
                             </p>
                             <div className="mt-10 flex items-center justify-center gap-x-6">
-                                <Button className="bg-orange-500 hover:bg-orange-700 text-white">See How It Works</Button>
                             </div>
 
                         </div>
